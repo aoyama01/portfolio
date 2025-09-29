@@ -10,7 +10,8 @@
 
 ### Goals
 
-- Next.js 14 App Router + TypeScript による最新の Web 技術実装
+- Next.js 15.1+ + React 19 による最新の Web 技術実装
+- React 19 Actions、useActionState、useOptimistic を活用した最新 UX
 - Core Web Vitals 90 点以上のハイパフォーマンス実現
 - WCAG 2.1 Level AA 準拠のアクセシビリティ確保
 - 日英バイリンガル対応による国際的な採用機会拡大
@@ -73,24 +74,35 @@ graph TB
 
 **Core Framework Decision**:
 
-- **選択**: Next.js 14.2+ with App Router
-- **コンテキスト**: モダンな SSG/ISR と SEO 最適化が必要
-- **選択理由**: React Server Components、自動最適化、Vercel 最適化統合
-- **トレードオフ**: 学習コストはあるが、パフォーマンスと開発体験が大幅向上
+- **選択**: Next.js 15.1+ with React 19 Stable
+- **コンテキスト**: 最新の React 機能と SSG/ISR、SEO 最適化が必要
+- **選択理由**: React Server Components 安定版、新 Actions API、useActionState/useOptimistic hooks、Turbopack 安定版
+- **代替案考慮**: Next.js 14.2 + React 18（安定性重視）、Next.js 15 + React 18（Pages Router 使用）
+- **トレードオフ**: 最新機能の利用可能だが、第三者ライブラリの互換性確認が必要
 
 **State Management Decision**:
 
-- **選択**: React Context (global) + SWR (server state)
-- **コンテキスト**: 複雑な状態管理が不要な個人サイト
-- **選択理由**: オーバーエンジニアリング回避、シンプルな実装
-- **トレードオフ**: 大規模アプリには不適だが、ポートフォリオサイトには最適
+- **選択**: React 19 Actions + useActionState + React Context (theme/locale)
+- **コンテキスト**: フォーム状態管理とサーバー通信の最適化が必要
+- **選択理由**: React 19 の新 Actions 機能で pending/error 状態自動管理、SWR 不要
+- **代替案考慮**: 従来の SWR + React Context、TanStack Query
+- **トレードオフ**: React 19 に依存するが、ボイラープレート大幅削減
 
 **Content Management Decision**:
 
-- **選択**: File-based (MDX + JSON)
+- **選択**: File-based (MDX + JSON) with React 19 Document Metadata
 - **コンテキスト**: Git 版管理統合とシンプルな更新フローが必要
-- **選択理由**: バックアップ自動化、バージョン履歴、外部依存なし
-- **トレードオフ**: 管理 UI はないが、開発者には最適な体験
+- **選択理由**: バックアップ自動化、バージョン履歴、外部依存なし、React 19 ネイティブメタデータ対応
+- **代替案考慮**: Headless CMS (Contentful/Sanity)、Database + CMS
+- **トレードオフ**: 管理 UI はないが、開発者には最適な体験、React 19 で SEO メタデータ管理簡素化
+
+**React 19 Modern APIs Decision**:
+
+- **選択**: useActionState (form handling) + useOptimistic (UI updates) + Server Actions
+- **コンテキスト**: お問い合わせフォームと動的コンテンツの最適な UX 実現
+- **選択理由**: サーバー送信の pending/error 状態自動管理、楽観的更新による即時フィードバック、Server Actions による型安全性
+- **代替案考慮**: 従来の useState + useTransition、React Hook Form、API Routes
+- **トレードオフ**: React 19 限定機能だが、大幅なコード簡素化と型安全性向上
 
 ## System Flows
 
@@ -268,6 +280,7 @@ type ProjectCategory =
 **Contract Definition**
 
 ```typescript
+// React 19 Action-based Form Handling
 interface ContactFormData {
   name: string;
   email: string;
@@ -276,18 +289,36 @@ interface ContactFormData {
   recaptchaToken: string;
 }
 
-interface ContactFormState {
-  isSubmitting: boolean;
-  errors: Partial<Record<keyof ContactFormData, string>>;
-  submitStatus: "idle" | "success" | "error";
+// Server Action Definition (React 19)
+async function submitContactForm(
+  prevState: ContactFormState,
+  formData: FormData
+): Promise<ContactFormState> {
+  // Server-side validation and email sending
+  // Returns new state with pending/error/success
 }
 
-// API Contract
-interface ContactAPIResponse {
+// useActionState Hook State (React 19)
+interface ContactFormState {
   success: boolean;
   message: string;
-  errors?: Record<string, string>;
+  errors?: Partial<Record<keyof ContactFormData, string>>;
+  pending?: boolean; // Automatically managed by React 19
 }
+
+// Component Implementation with React 19 APIs
+const ContactForm = () => {
+  const [state, action, isPending] = useActionState(submitContactForm, {
+    success: false,
+    message: "",
+  });
+
+  // useOptimistic for immediate UI feedback
+  const [optimisticState, addOptimistic] = useOptimistic(
+    state,
+    (current, newMessage) => ({ ...current, message: newMessage })
+  );
+};
 ```
 
 ### Data Layer
@@ -305,6 +336,7 @@ interface ContactAPIResponse {
 **Dependencies**
 
 - **External**: @next/mdx, rehype-highlight, remark-gfm, gray-matter
+- **React 19**: Native ref prop (forwardRef deprecated), document metadata support
 
 **Contract Definition**
 
@@ -347,6 +379,7 @@ type BlogCategory = "tutorial" | "insight" | "case-study" | "opinion";
 **Contract Definition**
 
 ```typescript
+// React 19 Updated: ref prop directly supported
 interface I18nConfig {
   defaultLocale: "ja" | "en";
   locales: Array<"ja" | "en">;
@@ -357,6 +390,12 @@ interface I18nContext {
   locale: "ja" | "en";
   setLocale: (locale: "ja" | "en") => void;
   t: (key: string, params?: Record<string, string>) => string;
+}
+
+// React 19 Server Action for locale switching
+async function setLocaleAction(locale: "ja" | "en"): Promise<void> {
+  "use server";
+  // Server-side locale setting with cookie/session
 }
 ```
 
@@ -568,7 +607,8 @@ graph TD
 
 ### Unit Tests
 
-- **Form Validation Logic**: ContactForm のバリデーション関数群
+- **React 19 Server Actions**: submitContactForm などの Server Action 関数
+- **React 19 Hooks**: useActionState, useOptimistic の状態遷移テスト
 - **Content Processing**: MDX processor と frontmatter 解析
 - **Utility Functions**: 日付フォーマット、URL 生成、テキスト処理
 - **Context Providers**: Theme、Language、User Preferences 状態管理
@@ -576,11 +616,12 @@ graph TD
 
 ### Integration Tests
 
-- **API Routes**: Contact form submission の end-to-end フロー
+- **React 19 Actions**: Server Actions と Client Component の統合フロー
+- **Form Submission**: useActionState による送信から結果表示まで
 - **Content Loading**: MDX/JSON ファイル読み込みから表示まで
 - **External Service Integration**: GitHub API、reCAPTCHA、Email service 連携
-- **Language Switching**: 国際化コンテンツ切り替えフロー
-- **Theme Management**: ダークモード切り替えと状態保持
+- **Language Switching**: Server Actions による国際化切り替えフロー
+- **Theme Management**: React 19 最適化による状態管理
 
 ### E2E/UI Tests
 
