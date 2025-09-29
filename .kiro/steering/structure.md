@@ -21,6 +21,7 @@ aoyama01/
 ## Source Code Structure (src/)
 
 ### Next.js App Router Architecture
+
 ```
 src/
 ├── app/                    # Next.js 14 App Router
@@ -43,6 +44,7 @@ src/
 ```
 
 ### Component Architecture
+
 ```
 src/components/
 ├── ui/                    # Reusable UI primitives
@@ -79,6 +81,7 @@ src/components/
 ```
 
 ### Utility and Configuration
+
 ```
 src/
 ├── lib/                   # Utility functions and configurations
@@ -102,6 +105,7 @@ src/
 ## Content Organization
 
 ### Content Structure
+
 ```
 content/
 ├── projects/              # Project portfolio data
@@ -119,6 +123,7 @@ content/
 ```
 
 ### Static Assets
+
 ```
 public/
 ├── images/                # Image assets
@@ -137,32 +142,35 @@ public/
 ## Code Organization Patterns
 
 ### File Naming Conventions
+
 - **Components**: PascalCase (e.g., `ProjectCard.tsx`)
 - **Utilities**: camelCase (e.g., `formatDate.ts`)
 - **Pages**: lowercase with hyphens (e.g., `about/page.tsx`)
 - **Constants**: SCREAMING_SNAKE_CASE in files, PascalCase for files
 
 ### Import Organization
+
 ```typescript
 // 1. React and Next.js imports
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 // 2. Third-party library imports
-import { motion } from 'framer-motion';
-import { format } from 'date-fns';
+import { motion } from "framer-motion";
+import { format } from "date-fns";
 
 // 3. Internal imports (absolute paths using @/ alias)
-import { Button } from '@/components/ui/Button';
-import { formatDate } from '@/lib/utils';
-import { Project } from '@/types/project';
+import { Button } from "@/components/ui/Button";
+import { formatDate } from "@/lib/utils";
+import { Project } from "@/types/project";
 
 // 4. Relative imports
-import './component.css';
+import "./component.css";
 ```
 
 ### Component Structure Pattern
+
 ```typescript
 // Type definitions first
 interface ComponentProps {
@@ -187,24 +195,28 @@ export default ComponentName;
 ## Key Architectural Principles
 
 ### App Router Patterns
+
 - **Server Components**: Default for static content
 - **Client Components**: Only when interactivity is needed ("use client")
 - **Layouts**: Shared UI elements across route groups
 - **Loading/Error**: Specialized UI for loading and error states
 
 ### State Management Strategy
+
 - **Server State**: SWR for external API data
 - **Global State**: React Context for theme, language preferences
 - **Local State**: useState/useReducer for component-specific state
 - **URL State**: Next.js router for navigation and filtering
 
 ### Content Management Approach
+
 - **MDX**: Blog posts with embedded React components
 - **JSON**: Structured data for projects and skills
 - **Static Generation**: Pre-built pages for optimal performance
 - **ISR**: Incremental regeneration for content updates
 
 ### Testing Structure
+
 ```
 tests/
 ├── __mocks__/            # Mock files for testing
@@ -217,6 +229,7 @@ tests/
 ## Development Workflow Structure
 
 ### Configuration Files
+
 ```
 config/
 ├── next.config.js       # Next.js configuration
@@ -228,6 +241,7 @@ config/
 ```
 
 ### Kiro Spec-Driven Development
+
 ```
 .kiro/
 ├── steering/            # Project-wide guidance

@@ -3,6 +3,7 @@
 ## Architecture
 
 ### System Design
+
 - **Architecture Pattern**: Jamstack (JavaScript, APIs, Markup)
 - **Deployment Strategy**: Static Site Generation (SSG) with Incremental Static Regeneration (ISR)
 - **Content Management**: File-based (Phase 1) → Headless CMS (Phase 2)
@@ -11,6 +12,7 @@
 ## Frontend Stack
 
 ### Core Framework
+
 ```yaml
 Next.js: 14.2+
   - App Router architecture
@@ -20,6 +22,7 @@ Next.js: 14.2+
 ```
 
 ### UI and Styling
+
 ```yaml
 Tailwind CSS: 3.4+
   - JIT (Just-In-Time) compilation
@@ -32,6 +35,7 @@ Fonts: Inter (Google Fonts)
 ```
 
 ### State Management
+
 ```yaml
 Global State: React Context
   - ThemeContext (dark mode)
@@ -45,6 +49,7 @@ Data Fetching: SWR 2.2+
 ```
 
 ### Development Tools
+
 ```yaml
 TypeScript: 5.2+
 ESLint: 8.x + recommended rules
@@ -56,6 +61,7 @@ lint-staged: Pre-commit file processing
 ## Content Management
 
 ### Phase 1: File-based
+
 ```yaml
 MDX: Blog articles with syntax highlighting
 JSON: Structured project data
@@ -64,6 +70,7 @@ Rehype/Remark: Markdown processing plugins
 ```
 
 ### Phase 2: Headless CMS (Planned)
+
 ```yaml
 Options: Contentful or Sanity
 Integration: Webhook-based regeneration
@@ -73,6 +80,7 @@ Preview: Draft content preview mode
 ## Infrastructure
 
 ### Hosting and Deployment
+
 ```yaml
 Primary Platform: Vercel
   - Zero-config deployment
@@ -87,6 +95,7 @@ DNS and CDN: Cloudflare
 ```
 
 ### CI/CD Pipeline
+
 ```yaml
 GitHub Actions:
   Pull Request Triggers:
@@ -104,6 +113,7 @@ GitHub Actions:
 ## Common Commands
 
 ### Development
+
 ```bash
 npm run dev          # Start development server
 npm run build        # Production build
@@ -114,6 +124,7 @@ npm run type-check   # TypeScript validation
 ```
 
 ### Testing and Quality
+
 ```bash
 npm run test         # Jest unit tests
 npm run test:watch   # Jest watch mode
@@ -122,6 +133,7 @@ npm run format       # Prettier formatting
 ```
 
 ### Content Management
+
 ```bash
 npm run build-sitemap  # Generate XML sitemap
 npm run optimize-images # Image optimization
@@ -131,6 +143,7 @@ npm run validate-content # Content validation
 ## Environment Variables
 
 ### Development (.env.local)
+
 ```bash
 NODE_ENV=development
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
@@ -141,6 +154,7 @@ RECAPTCHA_SITE_KEY=
 ```
 
 ### Production (.env.production)
+
 ```bash
 NODE_ENV=production
 NEXT_PUBLIC_SITE_URL=https://aoyama01.com
@@ -154,11 +168,13 @@ EMAIL_SERVICE_API_KEY=SG.xxxxxxxxxx
 ## Port Configuration
 
 ### Development Ports
+
 - **Main Application**: 3000 (Next.js dev server)
 - **Storybook**: 6006 (Component development)
 - **Jest**: N/A (Test runner)
 
 ### External Service Integration
+
 - **GitHub API**: api.github.com (repository data)
 - **reCAPTCHA**: google.com/recaptcha (form security)
 - **Analytics**: vercel-insights.com (performance tracking)
@@ -166,15 +182,17 @@ EMAIL_SERVICE_API_KEY=SG.xxxxxxxxxx
 ## Performance Requirements
 
 ### Core Web Vitals Targets
-| Metric | Target | Tool |
-|--------|--------|------|
-| First Contentful Paint (FCP) | < 1.8s | Lighthouse |
-| Largest Contentful Paint (LCP) | < 2.5s | Lighthouse |
-| First Input Delay (FID) | < 100ms | Lighthouse |
-| Cumulative Layout Shift (CLS) | < 0.1 | Lighthouse |
-| Time to Interactive (TTI) | < 3.8s | Lighthouse |
+
+| Metric                         | Target  | Tool       |
+| ------------------------------ | ------- | ---------- |
+| First Contentful Paint (FCP)   | < 1.8s  | Lighthouse |
+| Largest Contentful Paint (LCP) | < 2.5s  | Lighthouse |
+| First Input Delay (FID)        | < 100ms | Lighthouse |
+| Cumulative Layout Shift (CLS)  | < 0.1   | Lighthouse |
+| Time to Interactive (TTI)      | < 3.8s  | Lighthouse |
 
 ### Optimization Strategies
+
 - **Image Optimization**: Next.js Image component with WebP/AVIF
 - **Code Splitting**: Dynamic imports for heavy components
 - **Bundle Analysis**: Regular bundle size monitoring
@@ -183,6 +201,7 @@ EMAIL_SERVICE_API_KEY=SG.xxxxxxxxxx
 ## Security Configuration
 
 ### Security Headers (next.config.js)
+
 ```javascript
 Content-Security-Policy: Strict content sources
 X-Frame-Options: DENY
@@ -192,6 +211,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 ```
 
 ### Form Security
+
 - **Input Validation**: Zod schema validation
 - **XSS Protection**: Input sanitization
 - **Bot Prevention**: Google reCAPTCHA v3
@@ -200,11 +220,13 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 ## Monitoring and Analytics
 
 ### Performance Monitoring
+
 - **Vercel Analytics**: Real user metrics
 - **Lighthouse CI**: Automated performance testing
 - **Core Web Vitals**: Continuous monitoring
 
 ### Error Tracking
+
 - **Vercel Functions**: Built-in error logging
 - **Client-side Errors**: Custom error boundary
 - **Form Submission**: Success/failure tracking
