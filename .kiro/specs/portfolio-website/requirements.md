@@ -13,9 +13,10 @@
 #### 受入基準
 
 1. WHEN 訪問者がサイトにアクセスしたとき THEN Portfolio Website SHALL プロフィール写真、キャッチコピー、主要スキルを含むヒーローセクションを表示する
-2. WHEN 訪問者がナビゲーションメニューを操作するとき THEN Portfolio Website SHALL プロジェクト、レジュメ、ブログ、お問い合わせページへの明確なリンクを提供する
-3. WHERE 全てのページにおいて THE Portfolio Website SHALL 統一されたヘッダーナビゲーションとフッターを表示する
-4. WHEN 訪問者がロゴまたはホームリンクをクリックしたとき THEN Portfolio Website SHALL ホームページに遷移する
+2. WHERE ヒーローセクションにおいて THE Portfolio Website SHALL GitHub、LinkedIn などの外部 SNS へのリンクを適切なアイコンと共に表示する
+3. WHEN 訪問者がナビゲーションメニューを操作するとき THEN Portfolio Website SHALL プロジェクト、レジュメ、ブログ、お問い合わせページへの明確なリンクを提供する
+4. WHERE 全てのページにおいて THE Portfolio Website SHALL 統一されたヘッダーナビゲーションとフッターを表示する
+5. WHEN 訪問者がロゴまたはホームリンクをクリックしたとき THEN Portfolio Website SHALL ホームページに遷移する
 
 ### Requirement 2: プロジェクト・ポートフォリオ展示
 
@@ -42,15 +43,16 @@
 
 ### Requirement 4: お問い合わせとコミュニケーション
 
-**目的:** 採用担当者として、興味を持った技術者に安全かつ簡単に連絡できるよう、セキュアなお問い合わせ機能を提供したい。そうすることで、円滑な採用プロセスを開始できる。
+**目的:** 採用担当者として、興味を持った技術者に安全かつ簡単に連絡できるよう、セキュアなお問い合わせ機能を提供したい。そうすることで、円滑な採用プロセスを開始でき、同時にプライバシーとセキュリティを確保できる。
 
 #### 受入基準
 
-1. WHEN 訪問者がお問い合わせページにアクセスしたとき THEN Portfolio Website SHALL 名前、メールアドレス、件名、メッセージの入力フィールドを含むフォームを表示する
-2. WHEN 訪問者がフォームを送信するとき THEN Portfolio Website SHALL 入力データのバリデーションと reCAPTCHA 認証を実行する
-3. IF フォーム送信が成功した場合 THEN Portfolio Website SHALL 送信完了メッセージを表示し、フォームをリセットする
+1. WHEN 訪問者がお問い合わせページにアクセスしたとき THEN Portfolio Website SHALL 名前、メールアドレス、件名、メッセージの入力フィールドを含むセキュアフォームを表示する
+2. WHEN 訪問者がフォームを送信するとき THEN Portfolio Website SHALL 入力データのバリデーション（XSS 対策、文字数制限）と reCAPTCHA 認証を実行する
+3. IF フォーム送信が成功した場合 THEN Portfolio Website SHALL 送信完了メッセージを表示し、フォームをリセットし、確認メールを送信者に自動送信する
 4. IF フォーム送信でエラーが発生した場合 THEN Portfolio Website SHALL 具体的なエラーメッセージを表示し、入力データを保持する
-5. WHERE お問い合わせページにおいて THE Portfolio Website SHALL SNS リンクと代替連絡手段を併せて提供する
+5. WHERE お問い合わせページにおいて THE Portfolio Website SHALL 期待応答時間（48 時間以内）とプライバシーポリシーへのリンクを表示する
+6. WHEN お問い合わせが受信されたとき THEN Portfolio Website SHALL 管理者に通知メールを送信し、問い合わせ管理システムに記録する
 
 ### Requirement 5: ブログ・技術記事システム
 
