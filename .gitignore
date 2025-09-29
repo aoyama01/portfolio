@@ -34,10 +34,16 @@ logs
 # IDE files
 .vscode/
 .idea/
-.claude/
 *.swp
 *.swo
 *~
+
+# Agent configurations
+.claude/
+.claude/agents/
+.claude/hooks/
+.claude/commands/utils/
+CLAUDE.md
 
 # OS generated files
 .DS_Store
