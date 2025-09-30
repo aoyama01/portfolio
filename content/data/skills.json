@@ -1,0 +1,22 @@
+{
+  "skills": [
+    {
+      "name": "TypeScript",
+      "category": "Programming Languages",
+      "proficiency": 4,
+      "yearsOfExperience": 3
+    },
+    {
+      "name": "React",
+      "category": "Frontend Frameworks",
+      "proficiency": 5,
+      "yearsOfExperience": 4
+    },
+    {
+      "name": "Next.js",
+      "category": "Frontend Frameworks",
+      "proficiency": 4,
+      "yearsOfExperience": 2
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "experiences": [
+    {
+      "company": "Tech Company",
+      "position": "Frontend Developer",
+      "startDate": "2023-01-01",
+      "description": "Developed modern web applications using React and Next.js",
+      "achievements": [
+        "Implemented responsive UI components",
+        "Improved page load performance by 40%"
+      ],
+      "technologies": ["React", "TypeScript", "Next.js"]
+    }
+  ]
+}

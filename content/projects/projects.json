@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "slug": "portfolio-website",
+      "title": "Portfolio Website",
+      "description": "Next.js 15 + React 19を使用した個人ポートフォリオサイト。MDXによるブログシステム、プロジェクト展示、レジュメ管理機能を実装。",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "MDX"],
+      "category": "web-app",
+      "complexity": "complex",
+      "featured": true,
+      "startDate": "2025-09-01",
+      "status": "in-progress",
+      "githubUrl": "https://github.com/username/portfolio",
+      "imageUrl": "/images/projects/portfolio.png",
+      "detailContent": "portfolio-website"
+    }
+  ]
+}
