@@ -6,6 +6,10 @@ import remarkGfm from "remark-gfm";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // Note:
+  // Next.js turbopackでmdxを使う方法について https://zenn.dev/masan_eeic/articles/e4d7ea8eb2aa5c
+  // 以下のエラーでは解決せず
+  // [Error: loader /mnt/d/dev/repo/portfolio/node_modules/@next/mdx/mdx-rs-loader.js for match "#next-mdx" does not have serializable options. Ensure that options passed are plain JavaScript objects and values.]
   images: {
     formats: ["image/avif", "image/webp"],
   },
