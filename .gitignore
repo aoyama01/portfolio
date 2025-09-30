@@ -1,9 +1,17 @@
 # Dependencies
 node_modules/
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.pnpm-debug.log*
 
 # Next.js
 .next/
@@ -11,15 +19,24 @@ out/
 build/
 dist/
 
+# Production
+/build
+
 # Vercel
 .vercel
 
 # Environment variables
+.env*
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Testing
+/coverage
+*.lcov
+.nyc_output
 
 # Runtime data
 pids
@@ -38,7 +55,7 @@ logs
 *.swo
 *~
 
-# Agent configurations
+# Agent configurations (Kiro spec-driven development)
 .claude/
 .claude/agents/
 .claude/hooks/
@@ -49,6 +66,7 @@ CLAUDE.md
 .DS_Store
 .DS_Store?
 ._*
+*.pem
 .Spotlight-V100
 .Trashes
 ehthumbs.db
@@ -56,6 +74,7 @@ Thumbs.db
 
 # TypeScript
 *.tsbuildinfo
+next-env.d.ts
 
 # ESLint
 .eslintcache
@@ -65,13 +84,6 @@ Thumbs.db
 
 # Optional REPL history
 .node_repl_history
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
 
 # Storybook build outputs
 storybook-static
@@ -84,9 +96,8 @@ temp/
 *.backup
 *.bak
 
-# Lock files (choose one package manager)
+# Lock files (using npm)
 # yarn.lock
-# package-lock.json
 # pnpm-lock.yaml
 
 # Local content drafts
