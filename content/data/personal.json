@@ -1,11 +1,11 @@
 {
-  "name": "Your Name",
-  "title": "Full Stack Developer",
+  "name": "Shunya Aoyama",
+  "title": "Software Engineer",
   "email": "your.email@example.com",
-  "location": "Tokyo, Japan",
+  "location": "Osaka, Japan",
   "bio": "Passionate software developer with expertise in modern web technologies",
   "socialLinks": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourusername"
+    "github": "https://github.com/aoyama01",
+    "linkedin": "https://www.linkedin.com/in/shunya-aoyama"
   }
 }

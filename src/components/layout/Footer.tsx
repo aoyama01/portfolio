@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { getPersonalInfo } from "@/lib/content";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const personalInfo = getPersonalInfo();
 
   return (
     <footer className="border-border/40 bg-background w-full border-t">
@@ -26,7 +28,8 @@ export function Footer() {
             Sitemap
           </Link>
           <Link
-            href="https://github.com/yourusername"
+            // href="https://github.com/yourusername"
+            href={personalInfo?.socialLinks?.github}
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/60 hover:text-foreground transition-colors"
