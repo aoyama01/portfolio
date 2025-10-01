@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { ProjectSchema, ProjectsCollectionSchema, type Project } from "@/types/project";
+import { ProjectsCollectionSchema, type Project } from "@/types/project";
 import { SkillSchema, ExperienceSchema, PersonalInfoSchema } from "@/types/common";
 import type { Skill, Experience, PersonalInfo } from "@/types/common";
 

@@ -28,8 +28,7 @@ export function Footer() {
             Sitemap
           </Link>
           <Link
-            // href="https://github.com/yourusername"
-            href={personalInfo?.socialLinks?.github}
+            href={personalInfo?.socialLinks?.github || {}}
             target="_blank"
             rel="noopener noreferrer"
             className="text-foreground/60 hover:text-foreground transition-colors"

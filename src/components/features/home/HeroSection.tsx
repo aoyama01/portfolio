@@ -62,7 +62,7 @@ export function HeroSection() {
           )}
 
           {/* ソーシャルリンク */}
-          <SocialLinks socialLinks={personalInfo.socialLinks} />
+          <SocialLinks socialLinks={personalInfo.socialLinks || {}} />
 
           {/* 統計情報 */}
           <Stats projectCount={projects.length} />
