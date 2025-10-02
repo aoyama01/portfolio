@@ -96,7 +96,7 @@
   - _Requirements: 3.3_
 
 - [ ] 5. セキュアお問い合わせシステム
-- [ ] 5.1 React 19 Actions ベースフォーム
+- [x] 5.1 React 19 Actions ベースフォーム
   - useActionState フックによるフォーム状態管理
   - Server Actions によるサーバーサイド処理
   - フォーム入力フィールド（名前、メール、件名、メッセージ）
