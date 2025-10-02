@@ -1,22 +1,108 @@
 {
   "skills": [
     {
+      "id": "typescript",
       "name": "TypeScript",
       "category": "Programming Languages",
       "proficiency": 4,
-      "yearsOfExperience": 3
+      "yearsOfExperience": 3,
+      "description": "型安全なアプリケーション開発、高度な型システム活用"
     },
     {
-      "name": "React",
-      "category": "Frontend Frameworks",
+      "id": "javascript",
+      "name": "JavaScript",
+      "category": "Programming Languages",
       "proficiency": 5,
-      "yearsOfExperience": 4
+      "yearsOfExperience": 5,
+      "description": "ES6+の最新機能、非同期処理、関数型プログラミング"
     },
     {
+      "id": "python",
+      "name": "Python",
+      "category": "Programming Languages",
+      "proficiency": 3,
+      "yearsOfExperience": 2,
+      "description": "データ処理、スクリプティング、REST API開発"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "Frontend",
+      "proficiency": 5,
+      "yearsOfExperience": 4,
+      "description": "Hooks、Context API、パフォーマンス最適化、React 19対応"
+    },
+    {
+      "id": "nextjs",
       "name": "Next.js",
-      "category": "Frontend Frameworks",
+      "category": "Frontend",
       "proficiency": 4,
-      "yearsOfExperience": 2
+      "yearsOfExperience": 2,
+      "description": "App Router、Server Components、SSG/ISR、SEO最適化"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS",
+      "category": "Frontend",
+      "proficiency": 4,
+      "yearsOfExperience": 2,
+      "description": "Utility-first CSS、カスタムデザインシステム構築"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "Backend",
+      "proficiency": 4,
+      "yearsOfExperience": 3,
+      "description": "Express.js、REST API設計、非同期処理、ミドルウェア開発"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "Backend",
+      "proficiency": 3,
+      "yearsOfExperience": 2,
+      "description": "データベース設計、クエリ最適化、トランザクション管理"
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "DevOps",
+      "proficiency": 4,
+      "yearsOfExperience": 5,
+      "description": "ブランチ戦略、コードレビュー、CI/CD統合"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "category": "DevOps",
+      "proficiency": 3,
+      "yearsOfExperience": 2,
+      "description": "コンテナ化、Docker Compose、マルチステージビルド"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "category": "DevOps",
+      "proficiency": 4,
+      "yearsOfExperience": 1,
+      "description": "デプロイメント自動化、Edge Functions、Analytics統合"
+    },
+    {
+      "id": "jest",
+      "name": "Jest",
+      "category": "Testing",
+      "proficiency": 4,
+      "yearsOfExperience": 3,
+      "description": "ユニットテスト、統合テスト、モック、カバレッジ分析"
+    },
+    {
+      "id": "testing-library",
+      "name": "React Testing Library",
+      "category": "Testing",
+      "proficiency": 4,
+      "yearsOfExperience": 2,
+      "description": "ユーザー中心のテスト、アクセシビリティテスト"
     }
   ]
 }
