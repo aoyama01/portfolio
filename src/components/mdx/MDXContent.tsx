@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote-client/rsc";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import { rehypeRawCode } from "@/lib/rehype-raw-code";
 import { CodeBlock } from "./CodeBlock";
 
 /**
@@ -15,7 +16,11 @@ export function MDXContent({ source }: { source: string }) {
         options={{
           mdxOptions: {
             remarkPlugins: [remarkGfm],
-            rehypePlugins: [rehypeHighlight, rehypeSlug],
+            rehypePlugins: [
+              rehypeRawCode, // Must run before syntax highlighting
+              rehypeHighlight,
+              rehypeSlug,
+            ],
           },
         }}
         components={{

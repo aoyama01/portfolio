@@ -1,28 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Copy, Check } from "lucide-react";
 
 interface CodeBlockProps {
   children?: React.ReactNode;
   className?: string;
+  "data-raw"?: string;
 }
 
-export function CodeBlock({ children, className, ...props }: CodeBlockProps) {
+export function CodeBlock({ children, className, "data-raw": rawCode, ...props }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const preRef = useRef<HTMLPreElement>(null);
 
   const handleCopy = async () => {
-    // Extract text content from children
-    let textContent = "";
+    // Priority 1: Use raw code from data attribute (most reliable)
+    let textContent = rawCode;
 
-    if (typeof children === "string") {
-      textContent = children;
-    } else if (React.isValidElement(children)) {
-      const codeElement = children as React.ReactElement<{ children?: string }>;
-      const code = codeElement.props.children || "";
-      textContent = typeof code === "string" ? code : String(code);
-    } else {
-      textContent = String(children);
+    // Priority 2: Extract from DOM textContent as fallback
+    if (!textContent && preRef.current) {
+      textContent = preRef.current.textContent || "";
+    }
+
+    // Priority 3: Extract from children (legacy fallback)
+    if (!textContent) {
+      if (typeof children === "string") {
+        textContent = children;
+      } else if (React.isValidElement(children)) {
+        const codeElement = children as React.ReactElement<{ children?: string }>;
+        const code = codeElement.props.children || "";
+        textContent = typeof code === "string" ? code : String(code);
+      } else {
+        textContent = String(children);
+      }
     }
 
     try {
@@ -36,7 +46,7 @@ export function CodeBlock({ children, className, ...props }: CodeBlockProps) {
 
   return (
     <div className="group relative">
-      <pre className={className} {...props}>
+      <pre ref={preRef} className={className} {...props}>
         {children}
       </pre>
       <button
