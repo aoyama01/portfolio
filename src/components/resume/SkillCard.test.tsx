@@ -7,8 +7,9 @@ describe("SkillCard", () => {
     id: "react",
     name: "React",
     category: "Frontend",
-    proficiency: 5,
+    level: 5,
     yearsOfExperience: 4,
+    evidence: "10万DAUのダッシュボード開発、Server Components設計",
     description: "Hooks、Context API、パフォーマンス最適化",
   };
 
@@ -22,9 +23,10 @@ describe("SkillCard", () => {
     expect(screen.getByText("Frontend")).toBeInTheDocument();
   });
 
-  it("習熟度レベルを表示する", () => {
+  it("スキルレベルを表示する", () => {
     render(<SkillCard skill={mockSkill} />);
-    expect(screen.getByText(/習熟度/)).toBeInTheDocument();
+    expect(screen.getByText(/レベル/)).toBeInTheDocument();
+    expect(screen.getByText(/エキスパート/)).toBeInTheDocument();
   });
 
   it("経験年数を表示する", () => {
@@ -32,22 +34,24 @@ describe("SkillCard", () => {
     expect(screen.getByText(/4年/)).toBeInTheDocument();
   });
 
-  it("説明文を表示する", () => {
+  it("根拠を表示する", () => {
     render(<SkillCard skill={mockSkill} />);
-    expect(screen.getByText("Hooks、Context API、パフォーマンス最適化")).toBeInTheDocument();
+    expect(
+      screen.getByText("10万DAUのダッシュボード開発、Server Components設計")
+    ).toBeInTheDocument();
   });
 
-  it("習熟度に応じたプログレスバーを表示する", () => {
+  it("レベルに応じたプログレスバーを表示する", () => {
     render(<SkillCard skill={mockSkill} />);
     const progressBar = screen.getByRole("progressbar");
     expect(progressBar).toHaveAttribute("aria-valuenow", "5");
     expect(progressBar).toHaveAttribute("aria-valuemax", "5");
   });
 
-  it("習熟度が最大の場合、プログレスバーが100%表示される", () => {
+  it("レベルが最大の場合、プログレスバーが100%表示される", () => {
     render(<SkillCard skill={mockSkill} />);
     const progressBar = screen.getByRole("progressbar");
-    // proficiency 5 = 100%
+    // level 5 = 100%
     const progressFill = progressBar.querySelector("div");
     expect(progressFill).toHaveStyle({ width: "100%" });
   });

@@ -1,4 +1,5 @@
-import type { Skill, GroupedSkills } from "@/types/skill";
+import type { Skill, GroupedSkills, SkillLevel, SkillLevelDefinition } from "@/types/skill";
+import { SKILL_LEVELS } from "@/types/skill";
 
 /**
  * Group skills by their category
@@ -36,4 +37,13 @@ export function filterSkillsByCategory(skills: Skill[], category: string | null)
 export function getUniqueCategories(skills: Skill[]): string[] {
   const uniqueCategories = new Set(skills.map((skill) => skill.category));
   return Array.from(uniqueCategories);
+}
+
+/**
+ * スキルレベルの詳細定義を取得
+ * @param level - スキルレベル (1-5)
+ * @returns レベル定義情報
+ */
+export function getSkillLevelDefinition(level: SkillLevel): SkillLevelDefinition {
+  return SKILL_LEVELS[level];
 }

@@ -2,10 +2,13 @@ import { z } from "zod";
 
 // Skills Schema
 export const SkillSchema = z.object({
+  id: z.string(),
   name: z.string(),
   category: z.string(),
-  proficiency: z.number().min(1).max(5),
-  yearsOfExperience: z.number().min(0).optional(),
+  level: z.number().min(1).max(5),
+  yearsOfExperience: z.number().min(0),
+  evidence: z.string(),
+  description: z.string().optional(),
 });
 
 export type Skill = z.infer<typeof SkillSchema>;

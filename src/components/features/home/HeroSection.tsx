@@ -8,8 +8,8 @@ export function HeroSection() {
   const skills = getAllSkills();
   const projects = getAllProjects();
 
-  // 主要スキルを抽出（proficiency 4以上）
-  const topSkills = skills.filter((skill) => skill.proficiency >= 4).slice(0, 5);
+  // 主要スキルを抽出（level 4以上）
+  const topSkills = skills.filter((skill) => skill.level >= 4).slice(0, 5);
 
   if (!personalInfo) {
     return null;

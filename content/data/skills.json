@@ -4,104 +4,117 @@
       "id": "typescript",
       "name": "TypeScript",
       "category": "Programming Languages",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 3,
-      "description": "型安全なアプリケーション開発、高度な型システム活用"
+      "evidence": "実務で型安全な設計を実践、Generics・Utility Types活用、チーム開発で型定義を主導",
+      "description": "型システムを活用した堅牢なアプリケーション開発"
     },
     {
       "id": "javascript",
       "name": "JavaScript",
       "category": "Programming Languages",
-      "proficiency": 5,
+      "level": 5,
       "yearsOfExperience": 5,
+      "evidence": "10万DAU規模のアプリケーション開発、非同期処理の最適化、関数型プログラミングの実践",
       "description": "ES6+の最新機能、非同期処理、関数型プログラミング"
     },
     {
       "id": "python",
       "name": "Python",
       "category": "Programming Languages",
-      "proficiency": 3,
+      "level": 3,
       "yearsOfExperience": 2,
+      "evidence": "データ処理スクリプト開発、REST API実装経験、個人プロジェクトで活用",
       "description": "データ処理、スクリプティング、REST API開発"
     },
     {
       "id": "react",
       "name": "React",
       "category": "Frontend",
-      "proficiency": 5,
+      "level": 5,
       "yearsOfExperience": 4,
+      "evidence": "10万DAUのダッシュボード開発、Server Components設計、Hooks・パフォーマンス最適化、チームへの技術指導",
       "description": "Hooks、Context API、パフォーマンス最適化、React 19対応"
     },
     {
       "id": "nextjs",
       "name": "Next.js",
       "category": "Frontend",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 2,
+      "evidence": "App Router・Server Components実装、SSG/ISR活用、SEO最適化の実践",
       "description": "App Router、Server Components、SSG/ISR、SEO最適化"
     },
     {
       "id": "tailwind",
       "name": "Tailwind CSS",
       "category": "Frontend",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 2,
+      "evidence": "カスタムデザインシステム構築、レスポンシブデザイン実装、チームでの運用経験",
       "description": "Utility-first CSS、カスタムデザインシステム構築"
     },
     {
       "id": "nodejs",
       "name": "Node.js",
       "category": "Backend",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 3,
+      "evidence": "Express.jsでのREST API設計・実装、非同期処理最適化、ミドルウェア開発",
       "description": "Express.js、REST API設計、非同期処理、ミドルウェア開発"
     },
     {
       "id": "postgresql",
       "name": "PostgreSQL",
       "category": "Backend",
-      "proficiency": 3,
+      "level": 3,
       "yearsOfExperience": 2,
+      "evidence": "データベース設計・クエリ最適化の経験、トランザクション管理の実装",
       "description": "データベース設計、クエリ最適化、トランザクション管理"
     },
     {
       "id": "git",
       "name": "Git",
       "category": "DevOps",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 5,
+      "evidence": "ブランチ戦略の策定・運用、コードレビュー実践、CI/CD統合の経験",
       "description": "ブランチ戦略、コードレビュー、CI/CD統合"
     },
     {
       "id": "docker",
       "name": "Docker",
       "category": "DevOps",
-      "proficiency": 3,
+      "level": 3,
       "yearsOfExperience": 2,
+      "evidence": "コンテナ化の実装、Docker Compose活用、マルチステージビルドの経験",
       "description": "コンテナ化、Docker Compose、マルチステージビルド"
     },
     {
       "id": "vercel",
       "name": "Vercel",
       "category": "DevOps",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 1,
+      "evidence": "デプロイメント自動化の構築、Edge Functions実装、Analytics統合",
       "description": "デプロイメント自動化、Edge Functions、Analytics統合"
     },
     {
       "id": "jest",
       "name": "Jest",
       "category": "Testing",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 3,
+      "evidence": "ユニットテスト・統合テストの実装、モック活用、カバレッジ分析の実践",
       "description": "ユニットテスト、統合テスト、モック、カバレッジ分析"
     },
     {
       "id": "testing-library",
       "name": "React Testing Library",
       "category": "Testing",
-      "proficiency": 4,
+      "level": 4,
       "yearsOfExperience": 2,
+      "evidence": "ユーザー中心のテスト設計、アクセシビリティテストの実装経験",
       "description": "ユーザー中心のテスト、アクセシビリティテスト"
     }
   ]
