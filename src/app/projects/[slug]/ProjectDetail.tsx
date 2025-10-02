@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Github, ExternalLink, Calendar, Tag } from "lucide-react";
 import type { Project } from "@/types/project";
+import { getProjectDetail } from "@/lib/mdx";
+import { MDXContent } from "@/components/mdx/MDXContent";
 
 interface ProjectDetailProps {
   project: Project;
@@ -23,6 +25,8 @@ const complexityLabels: Record<string, string> = {
 };
 
 export function ProjectDetail({ project }: ProjectDetailProps) {
+  const projectDetail = project.detailContent ? getProjectDetail(project.detailContent) : null;
+
   const formattedStartDate = new Date(project.startDate).toLocaleDateString("ja-JP", {
     year: "numeric",
     month: "long",
@@ -119,12 +123,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
       </div>
 
-      {/* MDX Content - TODO: Implement MDX rendering */}
-      {project.detailContent && (
-        <div className="prose prose-lg dark:prose-invert max-w-none">
-          <p className="text-foreground/70">詳細なプロジェクト情報は準備中です。</p>
-        </div>
-      )}
+      {/* MDX Content */}
+      {projectDetail && <MDXContent source={projectDetail.content} />}
     </div>
   );
 }

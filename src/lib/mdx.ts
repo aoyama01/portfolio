@@ -95,15 +95,17 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
 /**
  * Get project detail MDX content
  */
-export function getProjectDetail(slug: string): string | null {
+export function getProjectDetail(
+  slug: string
+): { content: string; frontmatter: Record<string, unknown> } | null {
   const filePath = path.join(PROJECTS_DETAIL_DIR, `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) {
     return null;
   }
 
-  const { content } = parseMDXFile(filePath);
-  return content;
+  const { content, frontmatter } = parseMDXFile(filePath);
+  return { content, frontmatter };
 }
 
 /**
