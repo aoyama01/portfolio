@@ -14,7 +14,7 @@ export default function ContactPage() {
         <p className="mb-8 text-gray-600 dark:text-gray-400">
           ご質問やご相談がございましたら、以下のフォームからお気軽にお問い合わせください。
           <br />
-          通常48時間以内にご返信いたします。
+          通常48時間以内に返信いたします。
         </p>
 
         <ContactForm />
