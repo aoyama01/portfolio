@@ -598,22 +598,16 @@ export async function POST(request: NextRequest) {
     const validatedData = contactFormSchema.parse(body);
 
     // reCAPTCHA検証
-    const recaptchaResponse = await fetch(
-      "https://www.google.com/recaptcha/api/siteverify",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${validatedData.recaptchaToken}`,
-      }
-    );
+    const recaptchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${validatedData.recaptchaToken}`,
+    });
 
     const recaptchaResult = await recaptchaResponse.json();
 
     if (!recaptchaResult.success) {
-      return NextResponse.json(
-        { error: "reCAPTCHA認証に失敗しました" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "reCAPTCHA認証に失敗しました" }, { status: 400 });
     }
 
     // メール送信処理
@@ -621,10 +615,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ message: "お問い合わせを受け付けました" });
   } catch (error) {
-    return NextResponse.json(
-      { error: "サーバーエラーが発生しました" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "サーバーエラーが発生しました" }, { status: 500 });
   }
 }
 ```

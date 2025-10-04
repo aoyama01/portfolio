@@ -123,12 +123,7 @@ export type ProjectCategory =
   | "open-source"
   | "other";
 
-export type ProjectStatus =
-  | "planning"
-  | "in-progress"
-  | "completed"
-  | "maintained"
-  | "deprecated";
+export type ProjectStatus = "planning" | "in-progress" | "completed" | "maintained" | "deprecated";
 
 export interface ProjectArchitecture {
   frontend?: string; // Frontend technology
@@ -431,11 +426,7 @@ export interface Availability {
   notes?: string; // Additional notes
 }
 
-export type AvailabilityStatus =
-  | "available"
-  | "open-to-opportunities"
-  | "not-looking"
-  | "busy";
+export type AvailabilityStatus = "available" | "open-to-opportunities" | "not-looking" | "busy";
 ```
 
 ---
@@ -517,8 +508,7 @@ export interface TOCHeading {
 
 ```typescript
 // components/ui/Button.tsx
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive";
   size?: "sm" | "md" | "lg";
   loading?: boolean;
@@ -835,10 +825,7 @@ export const projectSchema = z.object({
     .max(100)
     .regex(/^[a-z0-9-]+$/, "ID must be lowercase alphanumeric with hyphens"),
 
-  title: z
-    .string()
-    .min(1, "Title is required")
-    .max(100, "Title must be 100 characters or less"),
+  title: z.string().min(1, "Title is required").max(100, "Title must be 100 characters or less"),
 
   description: z
     .string()
@@ -863,13 +850,7 @@ export const projectSchema = z.object({
     "other",
   ]),
 
-  status: z.enum([
-    "planning",
-    "in-progress",
-    "completed",
-    "maintained",
-    "deprecated",
-  ]),
+  status: z.enum(["planning", "in-progress", "completed", "maintained", "deprecated"]),
 
   featured: z.boolean(),
   priority: z.number().min(1).max(100),
@@ -909,10 +890,7 @@ export const blogPostSchema = z.object({
     .max(100)
     .regex(/^[a-z0-9-]+$/, "Slug must be lowercase alphanumeric with hyphens"),
 
-  title: z
-    .string()
-    .min(1, "Title is required")
-    .max(200, "Title must be 200 characters or less"),
+  title: z.string().min(1, "Title is required").max(200, "Title must be 200 characters or less"),
 
   description: z
     .string()
@@ -921,15 +899,7 @@ export const blogPostSchema = z.object({
 
   content: z.string().min(100, "Content must be at least 100 characters"),
 
-  category: z.enum([
-    "tutorial",
-    "insights",
-    "review",
-    "news",
-    "personal",
-    "technical",
-    "career",
-  ]),
+  category: z.enum(["tutorial", "insights", "review", "news", "personal", "technical", "career"]),
 
   tags: z
     .array(z.string())
@@ -983,9 +953,7 @@ export const projectFilterSchema = z.object({
     .optional(),
   technology: z.string().max(50).optional(),
   featured: z.coerce.boolean().optional(),
-  status: z
-    .enum(["planning", "in-progress", "completed", "maintained", "deprecated"])
-    .optional(),
+  status: z.enum(["planning", "in-progress", "completed", "maintained", "deprecated"]).optional(),
   sort: z.enum(["date", "title", "priority", "stars"]).default("date"),
   order: z.enum(["asc", "desc"]).default("desc"),
   search: z.string().max(100).optional(),
@@ -1001,15 +969,7 @@ export const blogFilterSchema = z.object({
   page: z.coerce.number().min(1).max(1000).default(1),
   limit: z.coerce.number().min(1).max(20).default(10),
   category: z
-    .enum([
-      "tutorial",
-      "insights",
-      "review",
-      "news",
-      "personal",
-      "technical",
-      "career",
-    ])
+    .enum(["tutorial", "insights", "review", "news", "personal", "technical", "career"])
     .optional(),
   tag: z.string().max(50).optional(),
   featured: z.coerce.boolean().optional(),

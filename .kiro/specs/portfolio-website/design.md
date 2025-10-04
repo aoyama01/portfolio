@@ -251,12 +251,7 @@ interface Project {
   endDate?: Date;
 }
 
-type ProjectCategory =
-  | "web-app"
-  | "mobile-app"
-  | "library"
-  | "tool"
-  | "experiment";
+type ProjectCategory = "web-app" | "mobile-app" | "library" | "tool" | "experiment";
 ```
 
 #### ContactForm Component
@@ -314,10 +309,10 @@ const ContactForm = () => {
   });
 
   // useOptimistic for immediate UI feedback
-  const [optimisticState, addOptimistic] = useOptimistic(
-    state,
-    (current, newMessage) => ({ ...current, message: newMessage })
-  );
+  const [optimisticState, addOptimistic] = useOptimistic(state, (current, newMessage) => ({
+    ...current,
+    message: newMessage,
+  }));
 };
 ```
 
@@ -453,12 +448,7 @@ interface ProjectAggregate {
   updatedAt: Date;
 }
 
-type ProjectStatus =
-  | "planning"
-  | "in-progress"
-  | "completed"
-  | "maintained"
-  | "archived";
+type ProjectStatus = "planning" | "in-progress" | "completed" | "maintained" | "archived";
 type ComplexityLevel = "simple" | "intermediate" | "complex" | "expert";
 ```
 
