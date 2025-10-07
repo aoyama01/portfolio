@@ -27,6 +27,16 @@ const complexityOrder: Record<ComplexityLevel, number> = {
   expert: 4,
 };
 
+// Unified button styles consistent with SkillFilter component
+const BUTTON_STYLES = {
+  selected: "bg-blue-600 text-white",
+  unselected:
+    "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600",
+  techSelected: "border-blue-600 bg-blue-600 text-white",
+  techUnselected:
+    "border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700",
+} as const;
+
 export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory | "all">("all");
@@ -183,9 +193,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
             <button
               onClick={() => setSelectedCategory("all")}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                selectedCategory === "all"
-                  ? "bg-foreground text-background"
-                  : "bg-foreground/10 hover:bg-foreground/20"
+                selectedCategory === "all" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
               }`}
             >
               すべて
@@ -195,9 +203,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  selectedCategory === category
-                    ? "bg-foreground text-background"
-                    : "bg-foreground/10 hover:bg-foreground/20"
+                  selectedCategory === category ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
                 }`}
               >
                 {categoryLabels[category]}
@@ -253,9 +259,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                 <button
                   onClick={() => setFilterMode("AND")}
                   className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors ${
-                    filterMode === "AND"
-                      ? "bg-foreground text-background"
-                      : "bg-foreground/10 hover:bg-foreground/20"
+                    filterMode === "AND" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
                   }`}
                 >
                   AND（すべて一致）
@@ -263,9 +267,7 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                 <button
                   onClick={() => setFilterMode("OR")}
                   className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors ${
-                    filterMode === "OR"
-                      ? "bg-foreground text-background"
-                      : "bg-foreground/10 hover:bg-foreground/20"
+                    filterMode === "OR" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
                   }`}
                 >
                   OR（いずれか一致）
@@ -285,8 +287,8 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
                     onClick={() => toggleTechnology(tech)}
                     className={`rounded-lg border px-3 py-1 text-sm font-medium transition-colors ${
                       selectedTechnologies.includes(tech)
-                        ? "border-foreground bg-foreground text-background"
-                        : "border-border bg-foreground/5 hover:bg-foreground/10"
+                        ? BUTTON_STYLES.techSelected
+                        : BUTTON_STYLES.techUnselected
                     }`}
                   >
                     {tech}

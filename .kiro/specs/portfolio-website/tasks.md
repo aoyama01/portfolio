@@ -65,7 +65,7 @@
   - 複数条件による AND/OR 検索機能
   - _Requirements: 2.3_
 
-- [ ] 3.2.1 プロジェクトページのフィルターボタンスタイル統一
+- [x] 3.2.1 プロジェクトページのフィルターボタンスタイル統一
   - Resume ページ（SkillFilter）と同じボタンスタイルを適用
   - 選択時: `bg-blue-600 text-white`
   - 非選択時: `bg-gray-200 text-gray-700` (light) / `bg-gray-700 text-gray-300` (dark)
