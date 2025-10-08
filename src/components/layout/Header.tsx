@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-gray-800 dark:bg-gray-900/95 dark:supports-[backdrop-filter]:bg-gray-900/60">
+    <header className="sticky top-0 z-50 w-full before:absolute before:inset-0 before:-z-10 before:bg-white/95 before:backdrop-blur before:supports-[backdrop-filter]:bg-white/60 dark:before:bg-gray-900/95 dark:before:supports-[backdrop-filter]:bg-gray-900/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">

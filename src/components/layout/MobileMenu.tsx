@@ -51,9 +51,9 @@ export function MobileMenu() {
 
       {/* Mobile Menu Fullscreen */}
       {isOpen && (
-        <div className="bg-background fixed top-16 right-0 bottom-0 left-0 z-40">
+        <div className="fixed inset-0 top-16 z-40 h-[calc(45vh-4rem)] before:absolute before:inset-0 before:-z-10 before:bg-white/95 before:backdrop-blur before:supports-[backdrop-filter]:bg-white/60 dark:before:bg-gray-900/95 dark:before:supports-[backdrop-filter]:bg-gray-900/60">
           {/* Navigation Links */}
-          <nav className="h-full px-4 py-6">
+          <nav className="flex h-full flex-col px-4 py-6">
             <div className="space-y-1">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
@@ -62,7 +62,7 @@ export function MobileMenu() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className={`hover:bg-foreground/5 block rounded-lg px-4 py-3 text-lg font-medium transition-colors ${
+                    className={`block rounded-lg px-4 py-3 text-lg font-medium transition-colors hover:bg-gray-200 dark:hover:bg-gray-900 ${
                       isActive
                         ? "bg-foreground/10 text-foreground"
                         : "text-foreground/60 hover:text-foreground"
