@@ -52,7 +52,7 @@ export function MobileMenu() {
 
       {/* Mobile Menu Fullscreen */}
       {isOpen && (
-        <div className="fixed inset-0 top-16 z-40 h-[calc(45vh-4rem)] before:absolute before:inset-0 before:-z-10 before:bg-white/95 before:backdrop-blur before:supports-[backdrop-filter]:bg-white/60 dark:before:bg-gray-900/95 dark:before:supports-[backdrop-filter]:bg-gray-900/60">
+        <div className="fixed top-16 right-0 left-0 z-40 before:absolute before:inset-0 before:-z-10 before:bg-white/95 before:backdrop-blur before:supports-[backdrop-filter]:bg-white/60 dark:before:bg-gray-900/95 dark:before:supports-[backdrop-filter]:bg-gray-900/60">
           {/* Navigation Links */}
           <nav className="flex h-full flex-col px-4 py-6">
             <div className="space-y-1">
@@ -76,7 +76,7 @@ export function MobileMenu() {
             </div>
 
             {/* Theme Toggle at bottom right */}
-            <div className="mt-auto flex justify-end pb-8">
+            <div className="mt-auto flex justify-end">
               <ThemeToggle />
             </div>
           </nav>
