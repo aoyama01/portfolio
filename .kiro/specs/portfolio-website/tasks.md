@@ -30,10 +30,18 @@
   - モバイル対応ハンバーガーメニュー
   - _Requirements: 1.3, 1.4, 1.5_
 
-- [] 2.1.1 ヘッダーとモバイル対応ハンバーガーメニューを修正
-  - 現状、メニューの背景が透過していて、body のページと被っている
-  - ヘッダーと同様の UI にする（背景を透過する感じ）
-  - スマホ版表示のとき、ThemeToggle がヘッダーの真ん中ではなくハンバーガーメニューの横に配置されるようにする
+- [x] 2.1.1 ヘッダーとモバイル対応ハンバーガーメニューを修正
+  - モバイルメニューの背景をヘッダーと同様の半透過背景 + backdrop-blur に変更
+  - 現状: `bg-background` (完全不透明) → 修正後: `bg-white/95 backdrop-blur dark:bg-gray-900/95` (半透過)
+    - 子コンポーネントの `backdrop-blur` が効かない問題：
+      https://github.com/tailwindlabs/tailwindcss/discussions/15103
+      CSS仕様: backdrop-filter は要素自身の背景には効かない。
+      - bg-white/95 backdrop-blur と書くと、背景色がぼかし効果を覆い隠してしまう
+      - 解決策：
+        親・子コンポーネントの両方で `::before` 疑似要素を用いて背景とぼかしを分離
+  - モバイル時に ThemeToggle をハンバーガーメニュー内（ナビゲーションリンクの下部右側）に配置
+  - デスクトップ時は現状維持（Navigation の横に ThemeToggle）
+  - Header で ThemeToggle をモバイル時には非表示にする
   - _Requirements: 1.3, 1.4, 1.5_
 
 - [x] 2.2 ヒーローセクションとソーシャルリンク
