@@ -46,13 +46,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
       )}
 
       {/* Image */}
-      <div className="bg-foreground/5 relative aspect-video w-full overflow-hidden">
-        <Image
-          src={project.imageUrl}
-          alt={project.title}
-          fill
-          className="object-cover transition-transform group-hover:scale-105"
-        />
+      <div className="bg-foreground/5 relative aspect-video w-full overflow-hidden transition-transform hover:scale-105">
+        <Image src={project.imageUrl} alt={project.title} fill className="object-cover" />
+        {/* Link Overlay */}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="absolute inset-0"
+          aria-label={`View ${project.title} details`}
+        >
+          <span className="sr-only">View project details</span>
+        </Link>
       </div>
 
       {/* Content */}
@@ -107,7 +110,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-foreground transition-colors"
+                className="text-foreground/60 transition-colors hover:scale-105"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
@@ -118,7 +121,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-foreground transition-colors"
+                className="text-foreground/60 transition-colors hover:scale-105"
                 aria-label="Demo"
               >
                 <ExternalLink className="h-5 w-5" />
@@ -126,15 +129,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             )}
           </div>
         </div>
-
-        {/* Link Overlay */}
-        <Link
-          href={`/projects/${project.slug}`}
-          className="absolute inset-0"
-          aria-label={`View ${project.title} details`}
-        >
-          <span className="sr-only">View project details</span>
-        </Link>
       </div>
     </div>
   );
