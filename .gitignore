@@ -89,8 +89,8 @@ next-env.d.ts
 storybook-static
 
 # Temporary folders
-tmp/
-temp/
+**/tmp/
+**/temp/
 
 # Backup files
 *.backup
