@@ -63,7 +63,7 @@ export function MobileMenu() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className={`block rounded-lg px-4 py-3 text-lg font-medium transition-colors hover:bg-gray-200 dark:hover:bg-gray-900 ${
+                    className={`block rounded-lg px-4 py-3 text-lg font-medium transition-colors hover:bg-gray-100/50 dark:hover:bg-gray-800/50 ${
                       isActive
                         ? "bg-foreground/10 text-foreground"
                         : "text-foreground/60 hover:text-foreground"
