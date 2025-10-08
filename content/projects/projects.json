@@ -90,6 +90,21 @@
       "status": "archived",
       "githubUrl": "https://github.com/username/ws-chat",
       "imageUrl": "/images/projects/ws-chat.png"
+    },
+    {
+      "id": "7",
+      "slug": "notion-clone",
+      "title": "Notion Clone",
+      "description": "MERNスタックで構築したNotion風メモ管理Webアプリ。JWT認証、Redux Toolkit状態管理、デバウンス処理によるリアルタイム更新を実装。",
+      "technologies": ["React", "Redux", "Node.js", "Express", "MongoDB", "Material-UI"],
+      "category": "web-app",
+      "featured": false,
+      "startDate": "2025-02-01",
+      "endDate": "2025-04-30",
+      "status": "completed",
+      "githubUrl": "https://github.com/aoyama01/notion-clone",
+      "imageUrl": "/images/projects/notion-clone.png",
+      "detailContent": "notion-clone"
     }
   ]
 }
