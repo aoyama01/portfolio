@@ -15,7 +15,9 @@ export function Header() {
         {/* Desktop Navigation and Theme Toggle */}
         <div className="flex items-center gap-4">
           <Navigation />
-          <ThemeToggle />
+          <div className="hidden md:block">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile Menu */}

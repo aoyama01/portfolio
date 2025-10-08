@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navItems } from "./Navigation";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +73,11 @@ export function MobileMenu() {
                   </Link>
                 );
               })}
+            </div>
+
+            {/* Theme Toggle at bottom right */}
+            <div className="mt-auto flex justify-end pb-8">
+              <ThemeToggle />
             </div>
           </nav>
         </div>
