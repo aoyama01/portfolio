@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { SkillCard } from "./SkillCard";
 import type { Skill } from "@/types/skill";
 
@@ -54,5 +55,46 @@ describe("SkillCard", () => {
     // level 5 = 100%
     const progressFill = progressBar.querySelector("div");
     expect(progressFill).toHaveStyle({ width: "100%" });
+  });
+
+  it("情報アイコンを表示する", () => {
+    render(<SkillCard skill={mockSkill} />);
+    // Info icon should be present
+    const icon = screen.getByRole("img", { hidden: true });
+    expect(icon).toBeInTheDocument();
+  });
+
+  it("ホバー時にレベル定義のツールチップを表示する", async () => {
+    const user = userEvent.setup();
+    render(<SkillCard skill={mockSkill} />);
+
+    // レベル定義は初期状態では非表示
+    expect(screen.queryByText(/高度な作業や設定が自力で可能/)).not.toBeInTheDocument();
+
+    // アイコンの親要素にホバー
+    const icon = screen.getByRole("img", { hidden: true });
+    const tooltipContainer = icon.closest("div");
+
+    await user.hover(tooltipContainer!);
+
+    // ツールチップにレベル定義が表示される
+    expect(screen.getAllByText(/エキスパート/).length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText(/高度な作業や設定が自力で可能/)).toBeInTheDocument();
+  });
+
+  it("クリック時にレベル定義のツールチップをトグルする", async () => {
+    const user = userEvent.setup();
+    render(<SkillCard skill={mockSkill} />);
+
+    const icon = screen.getByRole("img", { hidden: true });
+    const outerContainer = icon.closest(".relative");
+
+    // クリックで表示
+    await user.click(outerContainer!);
+    expect(screen.getByText(/高度な作業や設定が自力で可能/)).toBeInTheDocument();
+
+    // 再度クリックで非表示
+    await user.click(outerContainer!);
+    expect(screen.queryByText(/高度な作業や設定が自力で可能/)).not.toBeInTheDocument();
   });
 });

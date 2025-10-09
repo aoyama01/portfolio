@@ -1,5 +1,7 @@
 import type { Skill } from "@/types/skill";
 import { getSkillLevelDefinition } from "@/lib/utils/skills";
+import { Info } from "lucide-react";
+import { Tooltip } from "@/components/ui/Tooltip";
 
 interface SkillCardProps {
   skill: Skill;
@@ -20,9 +22,27 @@ export function SkillCard({ skill }: SkillCardProps) {
 
       <div className="mb-3">
         <div className="mb-1 flex items-center justify-between text-sm">
-          <span className="text-gray-600 dark:text-gray-400">
-            レベル{skill.level}: {levelDef.label}
-          </span>
+          <div className="flex items-center gap-1">
+            <span className="text-gray-600 dark:text-gray-400">
+              レベル{skill.level}: {levelDef.label}
+            </span>
+            <Tooltip
+              content={
+                <div className="max-w-xs">
+                  <p className="font-semibold">{levelDef.label}</p>
+                  <p className="mt-1 text-sm">{levelDef.description}</p>
+                </div>
+              }
+            >
+              <button
+                type="button"
+                className="translate-y-0.75 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                aria-label="スキルレベルの詳細を表示"
+              >
+                <Info className="h-4 w-4" aria-hidden="true" role="img" />
+              </button>
+            </Tooltip>
+          </div>
           <span className="text-gray-600 dark:text-gray-400">{skill.yearsOfExperience}年</span>
         </div>
         <div
