@@ -1,58 +1,16 @@
 {
   "experiences": [
     {
-      "company": "テックイノベーション株式会社",
-      "position": "シニアフロントエンドエンジニア",
-      "startDate": "2023-04-01",
-      "description": "大規模SaaSプロダクトのフロントエンド開発をリード。React 19とNext.js 15を活用した次世代アーキテクチャの設計・実装を担当。",
+      "company": "株式会社ナガセ",
+      "position": "バックエンドエンジニア",
+      "startDate": "205-04-01",
+      "description": "アーキテクチャの移行に伴って設置する新規DBと既存DBとの整合性を保証するため、Outboxパターンを用いた非同期処理の設計・実装・テストを担当。",
       "achievements": [
-        "10万DAUのダッシュボードをReact Server Componentsで再構築し、初期ロード時間を60%短縮",
-        "デザインシステムの構築とコンポーネントライブラリの整備により、開発速度を2倍に向上",
-        "チーム5名の技術リードとして、コードレビュー文化の醸成とベストプラクティスの確立",
-        "Core Web Vitalsスコアを平均85点に改善し、SEOランキング向上に貢献"
+        "SQS + Lambda による非同期処理の設計・Terraform による IaC 化",
+        "メッセージを送信するバッチ処理の実装・テスト",
+        "答案操作 (状態遷移) に関する API の実装・テスト (Unit test, E2E test)"
       ],
-      "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel", "PostgreSQL"]
-    },
-    {
-      "company": "スタートアップ ABC",
-      "position": "フルスタックエンジニア",
-      "startDate": "2021-07-01",
-      "endDate": "2023-03-31",
-      "description": "シード期スタートアップでMVP開発からプロダクトグロースまでを担当。フロントエンドからバックエンド、インフラまで幅広く経験。",
-      "achievements": [
-        "創業期メンバーとして0→1フェーズのプロダクト開発を主導",
-        "React + Node.jsのフルスタック構成でMVPを3ヶ月で構築・リリース",
-        "ユーザーフィードバックを基に週次でイテレーション、6ヶ月で1,000ユーザー獲得",
-        "CI/CDパイプライン構築により、デプロイ頻度を週1回から日次に改善"
-      ],
-      "technologies": ["React", "Node.js", "Express", "MongoDB", "Docker", "AWS", "GitHub Actions"]
-    },
-    {
-      "company": "大手IT企業グループ会社",
-      "position": "Webアプリケーションエンジニア",
-      "startDate": "2019-04-01",
-      "endDate": "2021-06-30",
-      "description": "エンタープライズ向けWebアプリケーションの開発・保守を担当。アジャイル開発手法を実践し、品質とスピードの両立を追求。",
-      "achievements": [
-        "レガシーシステムのReactへのマイグレーションプロジェクトをリード",
-        "自動テストカバレッジを30%から85%に向上させ、リグレッションバグを削減",
-        "ペアプログラミング・モブプログラミングの導入により、チーム全体のスキル向上に貢献",
-        "社内勉強会を主催し、フロントエンド技術の知識共有を推進"
-      ],
-      "technologies": ["React", "Redux", "TypeScript", "Jest", "Webpack", "Java", "Spring Boot"]
-    },
-    {
-      "company": "Web制作会社",
-      "position": "フロントエンドエンジニア（インターン）",
-      "startDate": "2018-06-01",
-      "endDate": "2019-03-31",
-      "description": "大学在学中に参加した長期インターン。クライアントワークを通じて実践的なWeb制作スキルを習得。",
-      "achievements": [
-        "中小企業向けコーポレートサイトを5件以上制作",
-        "jQuery中心のコードベースをVue.jsにモダナイズする提案を実施",
-        "レスポンシブデザイン・アクセシビリティ対応のベストプラクティスを学習"
-      ],
-      "technologies": ["HTML", "CSS", "JavaScript", "jQuery", "Vue.js", "WordPress", "Sass"]
+      "technologies": ["Go", "MySQL", "OpenAPI", "Docker", "AWS", "Terraform"]
     }
   ]
 }
