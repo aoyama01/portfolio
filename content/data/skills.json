@@ -95,6 +95,7 @@
       "name": "Vercel",
       "category": "DevOps",
       "level": 2,
+      "yearsOfExperience": 0.25,
       "evidence": "デプロイメント自動化の構築、Analytics統合",
       "description": "デプロイメント自動化、Analytics統合"
     }
