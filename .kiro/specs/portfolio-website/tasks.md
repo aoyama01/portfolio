@@ -111,6 +111,15 @@
   - アチーブメントハイライト機能
   - _Requirements: 3.1, 3.4_
 
+- [x] 4.2.1 学歴表示機能の追加
+  - Education 型定義とスキーマの作成（school, degree, field, startDate, endDate, gpa, activities, achievements）
+  - education.json データファイルの作成（content/data/）
+  - EducationSection コンポーネントの実装（ExperienceSection と同様のタイムラインレイアウト）
+  - getAllEducation() 関数の実装（src/lib/content.ts）
+  - Resume ページへの EducationSection 統合（ExperienceSection の下に配置）
+  - EducationSection.test.tsx の作成（時系列ソート、空データ処理、データ表示テスト）
+  - _Requirements: 3.1, 3.4_
+
 - [ ] 4.3 PDF レジュメ生成機能
   - 印刷最適化された PDF レイアウト作成
   - ワンクリック PDF ダウンロード機能

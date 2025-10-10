@@ -20,6 +20,7 @@ describe("EducationSection", () => {
       field: "人工知能",
       startDate: new Date("2022-04-01"),
       endDate: new Date("2024-03-31"),
+      lab: "機械学習研究室",
       gpa: "4.0/4.0",
       achievements: ["最優秀論文賞"],
     },
@@ -70,6 +71,20 @@ describe("EducationSection", () => {
 
     expect(screen.getByText(/GPA: 3.8\/4.0/)).toBeInTheDocument();
     expect(screen.getByText(/GPA: 4.0\/4.0/)).toBeInTheDocument();
+  });
+
+  it("研究室情報が存在する場合に表示する", () => {
+    render(<EducationSection education={mockEducation} />);
+
+    expect(screen.getByText(/研究室: 機械学習研究室/)).toBeInTheDocument();
+  });
+
+  it("研究室情報がない場合、研究室セクションを表示しない", () => {
+    render(<EducationSection education={mockEducation} />);
+
+    const cards = screen.getAllByTestId("education-card");
+    // 東京大学のカード（研究室情報なし）には研究室テキストがないことを確認
+    expect(cards[2]).not.toHaveTextContent("研究室:");
   });
 
   it("課外活動をリスト形式で表示する", () => {

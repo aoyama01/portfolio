@@ -55,6 +55,7 @@ export function EducationSection({ education }: EducationSectionProps) {
                   <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
                     {formatDateRange(edu.startDate, edu.endDate)}
                   </p>
+                  {edu.lab && <p className="text-sm text-gray-600 dark:text-gray-400">{edu.lab}</p>}
                 </div>
 
                 {/* GPA */}
