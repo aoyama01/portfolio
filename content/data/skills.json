@@ -75,7 +75,7 @@
     {
       "id": "git",
       "name": "Git",
-      "category": "DevOps",
+      "category": "DevOps & Infrastructure",
       "level": 4,
       "yearsOfExperience": 2.5,
       "evidence": "ブランチ戦略の策定・運用、コードレビュー実践、CI/CD統合の経験",
@@ -84,7 +84,7 @@
     {
       "id": "docker",
       "name": "Docker",
-      "category": "DevOps",
+      "category": "DevOps & Infrastructure",
       "level": 3,
       "yearsOfExperience": 1,
       "evidence": "コンテナ化の実装、Docker Compose活用、マルチステージビルドの経験",
@@ -93,11 +93,29 @@
     {
       "id": "vercel",
       "name": "Vercel",
-      "category": "DevOps",
+      "category": "DevOps & Infrastructure",
       "level": 2,
       "yearsOfExperience": 0.25,
       "evidence": "デプロイメント自動化の構築、Analytics統合",
       "description": "デプロイメント自動化、Analytics統合"
+    },
+    {
+      "id": "aws",
+      "name": "AWS",
+      "category": "DevOps & Infrastructure",
+      "level": 3,
+      "yearsOfExperience": 0.5,
+      "evidence": "実務でSQS + Lambdaによる非同期処理アーキテクチャ設計・構築、Terraformによるインフラ自動化、サーバーレス設計",
+      "description": "SQS・Lambda、サーバーレスアーキテクチャ、インフラ設計・構築"
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform",
+      "category": "DevOps & Infrastructure",
+      "level": 2,
+      "yearsOfExperience": 0.25,
+      "evidence": "実務でSQS + Lambdaの非同期処理基盤をIaC化、AWSリソース管理の自動化、モジュール設計・状態管理の実践",
+      "description": "Infrastructure as Code、AWSリソース管理、モジュール設計、状態管理"
     }
   ]
 }
