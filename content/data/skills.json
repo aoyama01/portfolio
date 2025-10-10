@@ -3,29 +3,29 @@
     {
       "id": "go",
       "name": "Go",
-      "category": "Programming Languages",
+      "category": "Programming Language",
       "level": 4,
       "yearsOfExperience": 0.5,
       "evidence": "実務でOutboxパターンを用いた非同期処理の設計・実装、REST API開発（OpenAPI準拠）、Unit/E2Eテスト作成、Terraformによるインフラコード化",
-      "description": "REST API設計、ドメイン駆動設計、クリーンアーキテクチャ"
+      "description": "REST API、Unit/E2Eテスト、ドメイン駆動設計、クリーンアーキテクチャ"
     },
     {
       "id": "typescript",
       "name": "TypeScript",
-      "category": "Programming Languages",
-      "level": 3,
+      "category": "Programming Language",
+      "level": 4,
       "yearsOfExperience": 1,
-      "evidence": "実務で型安全な設計を実践、Generics・Utility Types活用、チーム開発で型定義を主導",
-      "description": "型システムを活用した堅牢なアプリケーション開発"
+      "evidence": "Zod統合・ストリクトモード設計、Redux Toolkitの型安全な状態管理、Generics・Utility Types・条件型の実践",
+      "description": "型システム設計、Generics・Utility Types・条件型、Zod統合、Redux Toolkit型付け"
     },
     {
       "id": "python",
       "name": "Python",
-      "category": "Programming Languages",
+      "category": "Programming Language",
       "level": 3,
       "yearsOfExperience": 2.5,
-      "evidence": "時系列データ解析スクリプト開発、REST API実装経験、個人プロジェクトで活用",
-      "description": "データ解析、統計処理"
+      "evidence": "睡眠中脳波・心拍変動の長時間相互相関解析研究、DMCA手法による非定常信号処理、NumPy/SciPyでの信号前処理・統計解析、データクリーニング・補間アルゴリズム実装",
+      "description": "科学技術計算（NumPy/SciPy）、生体信号・時系列データ解析、信号処理、統計解析・仮説検証"
     },
     {
       "id": "react",
@@ -33,14 +33,14 @@
       "category": "Frontend",
       "level": 3,
       "yearsOfExperience": 1.5,
-      "evidence": "10万DAUのダッシュボード開発、Server Components設計、Hooks・パフォーマンス最適化、チームへの技術指導",
-      "description": "Hooks、Context API、パフォーマンス最適化、React 19対応"
+      "evidence": "React 19 + Server Components、Redux Toolkitによる複雑な状態管理・デバウンス処理実装、Hooks・Context API活用、パフォーマンス最適化",
+      "description": "React 19・Server Components、Hooks・カスタムフック、Redux Toolkit状態管理、パフォーマンス最適化"
     },
     {
       "id": "nextjs",
       "name": "Next.js",
       "category": "Frontend",
-      "level": 2,
+      "level": 3,
       "yearsOfExperience": 0.5,
       "evidence": "App Router・Server Components実装、SSG/ISR活用、SEO最適化の実践",
       "description": "App Router、Server Components、SSG/ISR、SEO最適化"
@@ -49,9 +49,9 @@
       "id": "tailwind",
       "name": "Tailwind CSS",
       "category": "Frontend",
-      "level": 2,
+      "level": 3,
       "yearsOfExperience": 1,
-      "evidence": "カスタムデザインシステム構築、レスポンシブデザイン実装、チームでの運用経験",
+      "evidence": "カスタムデザインシステム構築、レスポンシブデザイン実装",
       "description": "Utility-first CSS、カスタムデザインシステム構築"
     },
     {
@@ -60,8 +60,8 @@
       "category": "Backend",
       "level": 3,
       "yearsOfExperience": 1.5,
-      "evidence": "Express.jsでのREST API設計・実装、非同期処理最適化、ミドルウェア開発",
-      "description": "Express.js、REST API設計、非同期処理、ミドルウェア開発"
+      "evidence": "MERNスタックでのExpress.js REST API実装、JWT認証ミドルウェア開発、MongoDB統合、非同期処理・エラーハンドリング最適化、CORS・セキュリティ設定",
+      "description": "Express.js・REST API設計、JWT認証、非同期処理・Promise、ミドルウェア開発、MongoDB統合"
     },
     {
       "id": "mysql",
@@ -85,7 +85,7 @@
       "id": "docker",
       "name": "Docker",
       "category": "DevOps",
-      "level": 2,
+      "level": 3,
       "yearsOfExperience": 1,
       "evidence": "コンテナ化の実装、Docker Compose活用、マルチステージビルドの経験",
       "description": "コンテナ化、Docker Compose、マルチステージビルド"
