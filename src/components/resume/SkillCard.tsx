@@ -43,7 +43,9 @@ export function SkillCard({ skill }: SkillCardProps) {
               </button>
             </Tooltip>
           </div>
-          <span className="text-gray-600 dark:text-gray-400">{skill.yearsOfExperience}年</span>
+          {skill.yearsOfExperience && (
+            <span className="text-gray-600 dark:text-gray-400">{skill.yearsOfExperience}年</span>
+          )}
         </div>
         <div
           role="progressbar"
