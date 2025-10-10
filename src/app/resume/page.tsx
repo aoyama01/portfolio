@@ -1,10 +1,11 @@
 import { getSkills } from "@/lib/skills";
-import { getAllExperiences } from "@/lib/content";
-import { SkillsSectionWithFilter, ExperienceSection } from "@/components/resume";
+import { getAllExperiences, getAllEducation } from "@/lib/content";
+import { SkillsSectionWithFilter, ExperienceSection, EducationSection } from "@/components/resume";
 
 export default function ResumePage() {
   const { skills } = getSkills();
   const experiences = getAllExperiences();
+  const education = getAllEducation();
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -13,6 +14,8 @@ export default function ResumePage() {
       <SkillsSectionWithFilter skills={skills} />
 
       <ExperienceSection experiences={experiences} />
+
+      <EducationSection education={education} />
     </div>
   );
 }

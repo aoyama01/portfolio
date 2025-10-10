@@ -1,0 +1,18 @@
+{
+  "education": [
+    {
+      "school": "大阪大学",
+      "degree": "学士",
+      "field": "工学",
+      "startDate": "2021-04-01",
+      "endDate": "2025-03-31",
+      "activities": ["テニスサークル"]
+    },
+    {
+      "school": "大阪大学",
+      "degree": "修士",
+      "field": "工学",
+      "startDate": "2025-04-01"
+    }
+  ]
+}

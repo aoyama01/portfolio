@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
 import { ProjectsCollectionSchema, type Project } from "@/types/project";
-import { SkillSchema, ExperienceSchema, PersonalInfoSchema } from "@/types/common";
-import type { Skill, Experience, PersonalInfo } from "@/types/common";
+import { SkillSchema, ExperienceSchema, EducationSchema, PersonalInfoSchema } from "@/types/common";
+import type { Skill, Experience, Education, PersonalInfo } from "@/types/common";
 
 const DATA_DIR = path.join(process.cwd(), "content/data");
 const PROJECTS_FILE = path.join(process.cwd(), "content/projects/projects.json");
@@ -119,6 +119,21 @@ export function getAllExperiences(): Experience[] {
     return data.experiences.map((exp) => ExperienceSchema.parse(exp));
   } catch (error) {
     console.error("Error loading experiences:", error);
+    return [];
+  }
+}
+
+/**
+ * Get all education
+ */
+export function getAllEducation(): Education[] {
+  try {
+    const filePath = path.join(DATA_DIR, "education.json");
+    const data = readJSONFile<{ education: unknown[] }>(filePath);
+
+    return data.education.map((edu) => EducationSchema.parse(edu));
+  } catch (error) {
+    console.error("Error loading education:", error);
     return [];
   }
 }
