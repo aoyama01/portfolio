@@ -2,8 +2,13 @@
 
 import Link from "next/link";
 import { Home, ArrowLeft } from "lucide-react";
+import { allNavItems } from "@/lib/navigation";
 
 export default function NotFound() {
+  // 404ページは特殊なため、静的なナビゲーションアイテムを使用
+  // ブログリンクは常に含める（実際のナビゲーションメニューでは条件付きでフィルタリングされる）
+  const quickLinks = allNavItems.filter((item) => item.href !== "/");
+
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center px-4">
       <div className="mx-auto max-w-2xl text-center">
@@ -35,30 +40,15 @@ export default function NotFound() {
             Quick Links
           </h3>
           <nav className="flex flex-wrap justify-center gap-4 text-sm">
-            <Link
-              href="/projects"
-              className="text-foreground/60 hover:text-foreground transition-colors"
-            >
-              Projects
-            </Link>
-            <Link
-              href="/resume"
-              className="text-foreground/60 hover:text-foreground transition-colors"
-            >
-              Resume
-            </Link>
-            <Link
-              href="/blog"
-              className="text-foreground/60 hover:text-foreground transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/contact"
-              className="text-foreground/60 hover:text-foreground transition-colors"
-            >
-              Contact
-            </Link>
+            {quickLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-foreground/60 hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
       </div>

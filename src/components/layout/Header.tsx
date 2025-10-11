@@ -3,7 +3,11 @@ import { Navigation } from "./Navigation";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
-export function Header() {
+interface HeaderProps {
+  hasBlogPosts: boolean;
+}
+
+export function Header({ hasBlogPosts }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full before:absolute before:inset-0 before:-z-10 before:bg-white/95 before:backdrop-blur before:supports-[backdrop-filter]:bg-white/60 dark:before:bg-gray-900/95 dark:before:supports-[backdrop-filter]:bg-gray-900/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -14,14 +18,14 @@ export function Header() {
 
         {/* Desktop Navigation and Theme Toggle */}
         <div className="flex items-center gap-4">
-          <Navigation />
+          <Navigation hasBlogPosts={hasBlogPosts} />
           <div className="hidden md:block">
             <ThemeToggle />
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <MobileMenu />
+        <MobileMenu hasBlogPosts={hasBlogPosts} />
       </div>
     </header>
   );

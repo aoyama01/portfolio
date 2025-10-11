@@ -48,6 +48,9 @@ pids
 logs
 *.log
 
+# Exception: Keep Kiro implementation logs
+!.claude/commands/kiro/logs/
+
 # IDE files
 .vscode/
 .idea/

@@ -3,7 +3,7 @@
     {
       "company": "株式会社ナガセ",
       "position": "バックエンドエンジニア",
-      "startDate": "205-04-01",
+      "startDate": "2025-04-01",
       "description": "アーキテクチャの移行に伴って設置する新規DBと既存DBとの整合性を保証するため、Outboxパターンを用いた非同期処理の設計・実装・テストを担当。",
       "achievements": [
         "SQS + Lambda による非同期処理の設計・Terraform による IaC 化",

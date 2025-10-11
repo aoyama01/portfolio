@@ -3,12 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navItems } from "./Navigation";
+import { getFilteredNavItems } from "@/lib/navigation";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
-export function MobileMenu() {
+interface MobileMenuProps {
+  hasBlogPosts: boolean;
+}
+
+export function MobileMenu({ hasBlogPosts }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const navItems = getFilteredNavItems(hasBlogPosts);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
