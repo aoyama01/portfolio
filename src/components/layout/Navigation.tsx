@@ -2,17 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getFilteredNavItems } from "@/lib/navigation";
 
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/resume", label: "Resume" },
-  { href: "/contact", label: "Contact" },
-];
+interface NavigationProps {
+  hasBlogPosts: boolean;
+}
 
-export function Navigation() {
+export function Navigation({ hasBlogPosts }: NavigationProps) {
   const pathname = usePathname();
+  const navItems = getFilteredNavItems(hasBlogPosts);
 
   return (
     <nav className="hidden md:flex md:gap-6">
@@ -33,5 +31,3 @@ export function Navigation() {
     </nav>
   );
 }
-
-export { navItems };

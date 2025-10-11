@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { getExternalBlogPosts } from "@/lib/external-blog";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,18 +45,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = await getExternalBlogPosts();
+  const hasBlogPosts = posts.length > 0;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
       >
         <ThemeProvider>
-          <Header />
+          <Header hasBlogPosts={hasBlogPosts} />
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
