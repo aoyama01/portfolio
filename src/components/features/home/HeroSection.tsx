@@ -18,12 +18,12 @@ export async function HeroSection() {
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:px-8">
-      <div className="grid gap-8 md:grid-cols-[3fr_2fr] md:gap-12">
+      <div className="grid gap-8 md:grid-cols-[2.5fr_2fr] md:gap-12">
         {/* 左側: メイン情報 */}
         <div className="space-y-8 md:max-w-xl">
-          {/* プロフィール画像（小さめ） */}
+          {/* プロフィール画像 */}
           <div className="flex justify-center md:justify-start">
-            <div className="border-border relative h-32 w-32 overflow-hidden rounded-full border-4">
+            <div className="border-border relative h-40 w-40 overflow-hidden rounded-full border-4 md:h-32 md:w-32">
               <Image
                 src="/images/profile.jpg"
                 alt={personalInfo.name}
