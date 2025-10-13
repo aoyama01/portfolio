@@ -293,15 +293,34 @@
 
 ## UX改善タスク
 
-- [ ] 11. ホームページの UX 改善とナビゲーション最適化
-- [ ] 11.1 ホームページに主要ページへのクイックアクセスカードを追加
-  - ホームページ（HeroSection）の下部に Projects、Resume、Blog（記事がある場合）へのカードリンクを追加
-  - カード形式で表示：タイトル、説明、アイコンを含む
-  - レスポンシブグリッドレイアウト（モバイル: 1列、タブレット: 2列、デスクトップ: 3列）
-  - ナビゲーションバーをクリックしなくても主要ページに直接アクセス可能にする
-  - 現状: ナビゲーションバーが隠れているため、一度クリックしないとアクセスできない
-  - 改善後: ホームページから直接カードをクリックしてアクセス可能
-  - _Requirements: UX改善、アクセシビリティ向上_
+- [x] 11. ホームページの UX 改善とナビゲーション最適化
+- [x] 11.1 ホームページに主要ページへのクイックアクセスカードを追加
+  - QuickAccessCard コンポーネントを作成（src/components/home/QuickAccessCard.tsx）
+    - タイトル、説明、アイコン、リンクを含むカード形式
+    - ホバー時にスケールアップとシャドウ表示
+    - アイコンは lucide-react を使用（FolderGit2, FileText, Newspaper）
+  - QuickAccessSection コンポーネントを作成（src/components/home/QuickAccessSection.tsx）
+    - Server Component として実装（async/await 使用）
+    - getExternalBlogPosts() でブログ投稿の有無をチェック
+    - Blogカードは投稿がある場合のみ表示（条件付きレンダリング）
+    - カード配列: Projects, Resume, Blog（条件付き）
+    - QuickAccessCardコンポーネントを使用してカードを生成
+  - HeroSection コンポーネント（src/components/features/home/HeroSection.tsx）に統合
+    - プロフィール情報表示に専念（左側カラム）
+    - QuickAccessSectionを右側カラムとして配置
+  - レスポンシブレイアウト実装
+    - モバイル（<768px）: 1カラム（縦積み）
+    - タブレット/デスクトップ（≥768px）: 2カラムレイアウト（grid-cols-[3fr_2fr]）
+      - 左: プロフィール情報、スキル（md:max-w-xlで幅制限）
+      - 右: QuickAccessSection
+  - セクションパディング
+    - モバイル: py-12（48px）
+    - 640px以上: sm:py-16（64px）
+  - 左側カラムのレスポンシブ幅制限
+    - モバイル: 全幅使用（パディング内）
+    - 768px以上: md:max-w-xl（640px）で制限
+  - ナビゲーションバーをクリックしなくても主要ページに直接アクセス可能
+  - _Requirements: UX改善、アクセシビリティ向上、コンポーネント責任分離_
 
 - [x] 11.2 プロジェクト詳細ページのリンクを一時的に非表示
   - Feature Flag（設定ファイルベース）を使用してプロジェクト詳細ページへのリンクを条件付きで切り替え
