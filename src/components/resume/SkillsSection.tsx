@@ -10,7 +10,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   if (skills.length === 0) {
     return (
       <section className="py-8">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">スキル</h2>
+        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">Skill</h2>
         <p className="text-gray-600 dark:text-gray-400">スキル情報がありません</p>
       </section>
     );
@@ -20,7 +20,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
 
   return (
     <section className="py-8">
-      <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">スキル</h2>
+      <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">Skill</h2>
 
       <div className="space-y-8">
         {Object.entries(groupedSkills).map(([category, categorySkills]) => (

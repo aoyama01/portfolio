@@ -76,7 +76,7 @@ describe("EducationSection", () => {
   it("研究室情報が存在する場合に表示する", () => {
     render(<EducationSection education={mockEducation} />);
 
-    expect(screen.getByText(/研究室: 機械学習研究室/)).toBeInTheDocument();
+    expect(screen.getByText("機械学習研究室")).toBeInTheDocument();
   });
 
   it("研究室情報がない場合、研究室セクションを表示しない", () => {
@@ -137,7 +137,7 @@ describe("EducationSection", () => {
   it("セクションタイトルを表示する", () => {
     render(<EducationSection education={mockEducation} />);
 
-    expect(screen.getByRole("heading", { name: "学歴" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Education" })).toBeInTheDocument();
   });
 
   it("時系列表示のための視覚的インジケーターを含む", () => {

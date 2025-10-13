@@ -34,7 +34,7 @@ describe("ExperienceSection", () => {
 
   it("職歴情報がない場合、適切なメッセージを表示する", () => {
     render(<ExperienceSection experiences={[]} />);
-    expect(screen.getByText("職歴情報がありません")).toBeInTheDocument();
+    expect(screen.getByText("インターンシップ情報がありません")).toBeInTheDocument();
   });
 
   it("職歴情報を時系列順（新しい順）に表示する", () => {
@@ -128,7 +128,7 @@ describe("ExperienceSection", () => {
   it("セクションタイトルを表示する", () => {
     render(<ExperienceSection experiences={mockExperiences} />);
 
-    expect(screen.getByRole("heading", { name: "職歴" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Internship" })).toBeInTheDocument();
   });
 
   it("時系列表示のための視覚的インジケーターを含む", () => {

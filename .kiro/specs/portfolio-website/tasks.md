@@ -353,8 +353,8 @@
   - skills.json の yearsOfExperience フィールドはそのまま（数値型を維持）
   - _Requirements: UX改善、可読性向上_
 
-- [ ] 14. Resumeページのセクション名変更
-- [ ] 14.1 「職歴」を「インターンシップ」に変更
+- [x] 14. Resumeページのセクション名変更
+- [x] 14.1 「職歴」を「インターンシップ」に変更
   - ExperienceSection コンポーネントのタイトルを変更
     - 現状: "スキル", "職歴", "学歴" → 改善後: "Skill", "Internship", "Education"
   - Resume ページのセクション構成:

@@ -10,8 +10,8 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   if (experiences.length === 0) {
     return (
       <section className="py-8">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">職歴</h2>
-        <p className="text-gray-600 dark:text-gray-400">職歴情報がありません</p>
+        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">Internship</h2>
+        <p className="text-gray-600 dark:text-gray-400">インターンシップ情報がありません</p>
       </section>
     );
   }
@@ -20,7 +20,7 @@ export function ExperienceSection({ experiences }: ExperienceSectionProps) {
 
   return (
     <section className="py-8">
-      <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">職歴</h2>
+      <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">Internship</h2>
 
       <div className="relative">
         {/* Timeline indicator */}
