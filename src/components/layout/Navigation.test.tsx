@@ -19,7 +19,7 @@ describe("Navigation", () => {
       expect(screen.getByText("Projects")).toBeInTheDocument();
       expect(screen.getByText("Blog")).toBeInTheDocument();
       expect(screen.getByText("Resume")).toBeInTheDocument();
-      expect(screen.getByText("Contact")).toBeInTheDocument();
+      // Contact is removed from navigation (Task 15.1)
     });
   });
 
@@ -34,7 +34,7 @@ describe("Navigation", () => {
       expect(screen.getByText("Home")).toBeInTheDocument();
       expect(screen.getByText("Projects")).toBeInTheDocument();
       expect(screen.getByText("Resume")).toBeInTheDocument();
-      expect(screen.getByText("Contact")).toBeInTheDocument();
+      // Contact is removed from navigation (Task 15.1)
     });
   });
 });

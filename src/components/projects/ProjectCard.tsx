@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Calendar, Github, ExternalLink } from "lucide-react";
 import type { Project } from "@/types/project";
+import { FEATURES } from "@/lib/config/features";
 
 interface ProjectCardProps {
   project: Project;
@@ -36,6 +37,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
     month: "short",
   });
 
+  // Determine link destination based on feature flag
+  const imageLink = FEATURES.projectDetailPage.enabled
+    ? `/projects/${project.slug}` // Link to detail page when enabled
+    : project.githubUrl || null; // Link to GitHub when disabled (or null if no GitHub URL)
+
+  const imageLinkLabel = FEATURES.projectDetailPage.enabled
+    ? `View ${project.title} details`
+    : `View ${project.title} on GitHub`;
+
   return (
     <div className="group border-border bg-background relative flex flex-col overflow-hidden rounded-lg border transition-all hover:shadow-lg">
       {/* Featured Badge */}
@@ -48,14 +58,23 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {/* Image */}
       <div className="bg-foreground/5 relative aspect-video w-full overflow-hidden transition-transform hover:scale-105">
         <Image src={project.imageUrl} alt={project.title} fill className="object-cover" />
-        {/* Link Overlay */}
-        <Link
-          href={`/projects/${project.slug}`}
-          className="absolute inset-0"
-          aria-label={`View ${project.title} details`}
-        >
-          <span className="sr-only">View project details</span>
-        </Link>
+        {/* Link Overlay - conditionally rendered based on feature flag */}
+        {imageLink &&
+          (FEATURES.projectDetailPage.enabled ? (
+            <Link href={imageLink} className="absolute inset-0" aria-label={imageLinkLabel}>
+              <span className="sr-only">View project details</span>
+            </Link>
+          ) : (
+            <a
+              href={imageLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute inset-0"
+              aria-label={imageLinkLabel}
+            >
+              <span className="sr-only">View on GitHub</span>
+            </a>
+          ))}
       </div>
 
       {/* Content */}

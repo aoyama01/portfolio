@@ -303,16 +303,20 @@
   - 改善後: ホームページから直接カードをクリックしてアクセス可能
   - _Requirements: UX改善、アクセシビリティ向上_
 
-- [ ] 11.2 プロジェクト詳細ページのリンクを一時的に非表示
-  - プロジェクト詳細ページへの「詳細を見る」リンクを削除
-  - src/app/projects/[slug]/ProjectDetail.tsx は残す（将来の実装のため）
+- [x] 11.2 プロジェクト詳細ページのリンクを一時的に非表示
+  - Feature Flag（設定ファイルベース）を使用してプロジェクト詳細ページへのリンクを条件付きで切り替え
+  - src/lib/config/features.ts に projectDetailPage.enabled: false を追加
+  - src/app/projects/[slug]/ のページファイルは保持（将来の実装のため）
   - ProjectCard コンポーネントの修正
-    - 現状: カード画像のみプロジェクト詳細ページへのリンク
-    - 改善後: カード画像のみGitHubリポジトリページへのリンク
-  - プロジェクト詳細ページの GitHubリポジトリリンクとライブデモリンクを強調表示
-  - ProjectCard に GitHubリポジトリとライブデモへの直接リンクを追加（既に実装済み）
+    - 現状: カード画像がプロジェクト詳細ページ（/projects/[slug]）へのリンク
+    - 改善後: Feature Flagが無効の場合、カード画像がGitHubリポジトリへの外部リンク（新規タブ）
+    - Feature Flagが有効の場合: 元の詳細ページへの内部リンク（Link コンポーネント）
+    - GitHubURLが無い場合: リンクなし（画像のみ表示）
+  - ProjectCard の GitHubリポジトリとライブデモへの直接リンクはそのまま維持
   - プロジェクトの詳細情報は GitHub README に記載し、ポートフォリオサイトはシンプルにする方針
-  - _Requirements: UX改善、情報アーキテクチャの最適化_
+  - 将来的に詳細ページを復元する場合は features.ts の projectDetailPage.enabled を true に変更するのみ
+  - テストの修正: Task 15.1（Contactリンク削除）に関連するテストの期待値を更新
+  - _Requirements: UX改善、情報アーキテクチャの最適化、将来の拡張性_
 
 - [x] 11.3 Projectsページのフィルター機能を一時的に非表示
   - Feature Flag（設定ファイルベース）を使用して機能を条件付きで非表示

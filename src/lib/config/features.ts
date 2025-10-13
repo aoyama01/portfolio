@@ -41,6 +41,24 @@ export const FEATURES = {
     categoryFilter: true,
   },
 
+  /**
+   * Project detail page configuration
+   *
+   * History:
+   * - 2025-10-13: Temporarily disabled for UX simplification (Task 11.2)
+   * - Detail information is now maintained in GitHub README
+   * - Portfolio site focuses on quick overview and direct links
+   *
+   * Review date: 2026-01-13 (3 months)
+   */
+  projectDetailPage: {
+    /**
+     * Enable project detail pages at /projects/[slug]
+     * When false, project card images link to GitHub repository instead
+     */
+    enabled: false,
+  },
+
   // Future feature flags can be added here
   // Example:
   // blog: {

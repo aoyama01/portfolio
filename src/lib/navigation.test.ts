@@ -5,20 +5,14 @@ describe("navigation helpers", () => {
     it("ブログ記事が存在する場合、すべてのナビゲーションアイテムを返す", () => {
       const result = getFilteredNavItems(true);
       expect(result).toEqual(allNavItems);
-      expect(result).toHaveLength(5);
-      expect(result.map((item) => item.label)).toEqual([
-        "Home",
-        "Projects",
-        "Blog",
-        "Resume",
-        "Contact",
-      ]);
+      expect(result).toHaveLength(4);
+      expect(result.map((item) => item.label)).toEqual(["Home", "Projects", "Blog", "Resume"]);
     });
 
     it("ブログ記事が存在しない場合、Blogアイテムを除外する", () => {
       const result = getFilteredNavItems(false);
-      expect(result).toHaveLength(4);
-      expect(result.map((item) => item.label)).toEqual(["Home", "Projects", "Resume", "Contact"]);
+      expect(result).toHaveLength(3);
+      expect(result.map((item) => item.label)).toEqual(["Home", "Projects", "Resume"]);
       expect(result.find((item) => item.href === "/blog")).toBeUndefined();
     });
 
