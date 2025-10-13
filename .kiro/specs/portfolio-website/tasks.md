@@ -314,16 +314,25 @@
   - プロジェクトの詳細情報は GitHub README に記載し、ポートフォリオサイトはシンプルにする方針
   - _Requirements: UX改善、情報アーキテクチャの最適化_
 
-- [ ] 11.3 Projectsページのフィルター機能を削除
-  - ProjectsClient コンポーネントから以下の機能を削除:
+- [x] 11.3 Projectsページのフィルター機能を一時的に非表示
+  - Feature Flag（設定ファイルベース）を使用して機能を条件付きで非表示
+  - src/lib/config/features.ts に FEATURES 定義を追加
+    - projectFilters.enabled: false（マスタースイッチ）
+    - projectFilters.advancedFilters: false（技術/年度/AND/ORフィルター）
+    - projectFilters.sortOptions: false（並び替えドロップダウン）
+    - projectFilters.categoryFilter: true（カテゴリフィルターは常に表示）
+  - ProjectsClient コンポーネントで FEATURES をインポートして条件分岐
+  - 非表示にした機能:
     - 技術スタック別フィルタリング（selectedTechnologies, toggleTechnology）
     - 年度別フィルタリング（selectedYear）
     - AND/OR 検索モード切り替え（filterMode）
     - 詳細フィルター表示/非表示トグル（showAdvancedFilters）
-  - 並び替え機能（sortBy）も削除を検討（新着順のみでシンプルに）
-  - カテゴリフィルター（selectedCategory）は残す
-  - シンプルな表示に変更: カテゴリ別タブと新着順の一覧のみ
-  - _Requirements: UX簡素化、プロジェクト一覧の可読性向上_
+    - 並び替え機能ドロップダウン（sortBy - デフォルトは新着順のまま）
+  - カテゴリフィルター（selectedCategory）は引き続き表示
+  - テストを Feature Flag に対応（describe.skip による条件付きスキップ）
+  - ADR 作成: docs/adr/0001-feature-flags-for-temporary-ui-changes.md
+  - 将来的に機能を復元する場合は features.ts の設定を変更するのみ
+  - _Requirements: UX簡素化、プロジェクト一覧の可読性向上、将来の拡張性_
 
 - [x] 12. フッターとナビゲーションの視覚的改善
 - [x] 12.1 フッターのデザインをシンプルに変更

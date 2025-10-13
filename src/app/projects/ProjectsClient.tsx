@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import type { Project, ProjectCategory, ComplexityLevel } from "@/types/project";
 import { X } from "lucide-react";
+import { FEATURES } from "@/lib/config/features";
 
 interface ProjectsClientProps {
   initialProjects: Project[];
@@ -211,112 +212,121 @@ export function ProjectsClient({ initialProjects }: ProjectsClientProps) {
             ))}
           </div>
 
-          {/* Sort */}
-          <div className="flex items-center gap-2">
-            <label htmlFor="sort" className="text-foreground/70 text-sm font-medium">
-              並び替え:
-            </label>
-            <select
-              id="sort"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="border-border bg-background focus:ring-foreground/20 rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
-            >
-              <option value="newest">新着順</option>
-              <option value="oldest">古い順</option>
-              <option value="category">カテゴリ別</option>
-              <option value="complexity">複雑度順</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Advanced Filters Toggle */}
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-            className="text-foreground/70 hover:text-foreground text-sm font-medium transition-colors"
-          >
-            {showAdvancedFilters ? "詳細フィルターを隠す" : "詳細フィルターを表示"}
-          </button>
-          {hasActiveFilters && (
-            <button
-              onClick={clearAllFilters}
-              className="flex items-center gap-1 text-sm font-medium text-red-500 transition-colors hover:text-red-600"
-            >
-              <X className="h-4 w-4" />
-              フィルターをクリア
-            </button>
+          {/* Sort - conditionally hidden based on feature flag */}
+          {FEATURES.projectFilters.sortOptions && (
+            <div className="flex items-center gap-2">
+              <label htmlFor="sort" className="text-foreground/70 text-sm font-medium">
+                並び替え:
+              </label>
+              <select
+                id="sort"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
+                className="border-border bg-background focus:ring-foreground/20 rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
+              >
+                <option value="newest">新着順</option>
+                <option value="oldest">古い順</option>
+                <option value="category">カテゴリ別</option>
+                <option value="complexity">複雑度順</option>
+              </select>
+            </div>
           )}
         </div>
 
-        {/* Advanced Filters */}
-        {showAdvancedFilters && (
-          <div className="border-border space-y-4 rounded-lg border p-4">
-            {/* Filter Mode Toggle */}
+        {/* Advanced Filters Toggle - conditionally hidden based on feature flag */}
+        {FEATURES.projectFilters.advancedFilters && (
+          <>
             <div className="flex items-center gap-4">
-              <span className="text-foreground/70 text-sm font-medium">検索モード:</span>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setFilterMode("AND")}
-                  className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors ${
-                    filterMode === "AND" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
-                  }`}
-                >
-                  AND（すべて一致）
-                </button>
-                <button
-                  onClick={() => setFilterMode("OR")}
-                  className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors ${
-                    filterMode === "OR" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
-                  }`}
-                >
-                  OR（いずれか一致）
-                </button>
-              </div>
-            </div>
-
-            {/* Technology Filter */}
-            <div>
-              <label className="text-foreground/70 mb-2 block text-sm font-medium">
-                技術スタック:
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {technologies.map((tech) => (
-                  <button
-                    key={tech}
-                    onClick={() => toggleTechnology(tech)}
-                    className={`rounded-lg border px-3 py-1 text-sm font-medium transition-colors ${
-                      selectedTechnologies.includes(tech)
-                        ? BUTTON_STYLES.techSelected
-                        : BUTTON_STYLES.techUnselected
-                    }`}
-                  >
-                    {tech}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Year Filter */}
-            <div>
-              <label htmlFor="year" className="text-foreground/70 mb-2 block text-sm font-medium">
-                年度:
-              </label>
-              <select
-                id="year"
-                value={selectedYear}
-                onChange={(e) => setSelectedYear(e.target.value)}
-                className="border-border bg-background focus:ring-foreground/20 rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
+              <button
+                onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+                className="text-foreground/70 hover:text-foreground text-sm font-medium transition-colors"
               >
-                <option value="all">すべて</option>
-                {years.map((year) => (
-                  <option key={year} value={year.toString()}>
-                    {year}年
-                  </option>
-                ))}
-              </select>
+                {showAdvancedFilters ? "詳細フィルターを隠す" : "詳細フィルターを表示"}
+              </button>
+              {hasActiveFilters && (
+                <button
+                  onClick={clearAllFilters}
+                  className="flex items-center gap-1 text-sm font-medium text-red-500 transition-colors hover:text-red-600"
+                >
+                  <X className="h-4 w-4" />
+                  フィルターをクリア
+                </button>
+              )}
             </div>
-          </div>
+
+            {/* Advanced Filters */}
+            {showAdvancedFilters && (
+              <div className="border-border space-y-4 rounded-lg border p-4">
+                {/* Filter Mode Toggle */}
+                <div className="flex items-center gap-4">
+                  <span className="text-foreground/70 text-sm font-medium">検索モード:</span>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setFilterMode("AND")}
+                      className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors ${
+                        filterMode === "AND" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
+                      }`}
+                    >
+                      AND（すべて一致）
+                    </button>
+                    <button
+                      onClick={() => setFilterMode("OR")}
+                      className={`rounded-lg px-3 py-1 text-sm font-medium transition-colors ${
+                        filterMode === "OR" ? BUTTON_STYLES.selected : BUTTON_STYLES.unselected
+                      }`}
+                    >
+                      OR（いずれか一致）
+                    </button>
+                  </div>
+                </div>
+
+                {/* Technology Filter */}
+                <div>
+                  <label className="text-foreground/70 mb-2 block text-sm font-medium">
+                    技術スタック:
+                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    {technologies.map((tech) => (
+                      <button
+                        key={tech}
+                        onClick={() => toggleTechnology(tech)}
+                        className={`rounded-lg border px-3 py-1 text-sm font-medium transition-colors ${
+                          selectedTechnologies.includes(tech)
+                            ? BUTTON_STYLES.techSelected
+                            : BUTTON_STYLES.techUnselected
+                        }`}
+                      >
+                        {tech}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Year Filter */}
+                <div>
+                  <label
+                    htmlFor="year"
+                    className="text-foreground/70 mb-2 block text-sm font-medium"
+                  >
+                    年度:
+                  </label>
+                  <select
+                    id="year"
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="border-border bg-background focus:ring-foreground/20 rounded-lg border px-3 py-2 text-sm focus:ring-2 focus:outline-none"
+                  >
+                    <option value="all">すべて</option>
+                    {years.map((year) => (
+                      <option key={year} value={year.toString()}>
+                        {year}年
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
 
