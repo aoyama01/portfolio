@@ -43,8 +43,9 @@ export async function HeroSection() {
           {/* Bio と SocialLinks */}
           <div className="space-y-4">
             <p className="text-foreground/70 text-lg">{personalInfo.bio}</p>
-            <SocialLinks socialLinks={personalInfo.socialLinks || {}} />
           </div>
+
+          <SocialLinks socialLinks={personalInfo.socialLinks || {}} />
 
           {/* 主要スキル */}
           {topSkills.length > 0 && (
