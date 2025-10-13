@@ -1,13 +1,11 @@
 import Image from "next/image";
-import { getPersonalInfo, getAllSkills, getAllProjects } from "@/lib/content";
+import { getPersonalInfo, getAllSkills } from "@/lib/content";
 import { SocialLinks } from "./SocialLinks";
-import { Stats } from "./Stats";
 import { QuickAccessSection } from "@/components/home/QuickAccessSection";
 
 export async function HeroSection() {
   const personalInfo = getPersonalInfo();
   const skills = getAllSkills();
-  const projects = getAllProjects();
 
   // 主要スキルを抽出（level 3以上）
   const topSkills = skills.filter((skill) => skill.level >= 3).slice(0, 5);
