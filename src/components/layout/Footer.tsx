@@ -22,8 +22,8 @@ export async function Footer() {
   ];
 
   return (
-    <footer className="border-border/40 w-full border-t">
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <footer className="border-border/40 mt-16 w-full border-t sm:mt-20">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <div className="grid gap-6 md:grid-cols-3">
           {/* Site Navigation */}
           <div>
