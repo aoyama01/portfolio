@@ -290,3 +290,87 @@
   - セキュリティテストと脆弱性スキャン
   - 本番環境デプロイとドメイン設定完了
   - _Requirements: 全要件の完全実装確認_
+
+## UX改善タスク
+
+- [ ] 11. ホームページの UX 改善とナビゲーション最適化
+- [ ] 11.1 ホームページに主要ページへのクイックアクセスカードを追加
+  - ホームページ（HeroSection）の下部に Projects、Resume、Blog（記事がある場合）へのカードリンクを追加
+  - カード形式で表示：タイトル、説明、アイコンを含む
+  - レスポンシブグリッドレイアウト（モバイル: 1列、タブレット: 2列、デスクトップ: 3列）
+  - ナビゲーションバーをクリックしなくても主要ページに直接アクセス可能にする
+  - 現状: ナビゲーションバーが隠れているため、一度クリックしないとアクセスできない
+  - 改善後: ホームページから直接カードをクリックしてアクセス可能
+  - _Requirements: UX改善、アクセシビリティ向上_
+
+- [ ] 11.2 プロジェクト詳細ページのリンクを一時的に非表示
+  - プロジェクト詳細ページへの「詳細を見る」リンクを削除
+  - src/app/projects/[slug]/ProjectDetail.tsx は残す（将来の実装のため）
+  - ProjectCard コンポーネントの修正
+    - 現状: カード画像のみプロジェクト詳細ページへのリンク
+    - 改善後: カード画像のみGitHubリポジトリページへのリンク
+  - プロジェクト詳細ページの GitHubリポジトリリンクとライブデモリンクを強調表示
+  - ProjectCard に GitHubリポジトリとライブデモへの直接リンクを追加（既に実装済み）
+  - プロジェクトの詳細情報は GitHub README に記載し、ポートフォリオサイトはシンプルにする方針
+  - _Requirements: UX改善、情報アーキテクチャの最適化_
+
+- [ ] 11.3 Projectsページのフィルター機能を削除
+  - ProjectsClient コンポーネントから以下の機能を削除:
+    - 技術スタック別フィルタリング（selectedTechnologies, toggleTechnology）
+    - 年度別フィルタリング（selectedYear）
+    - AND/OR 検索モード切り替え（filterMode）
+    - 詳細フィルター表示/非表示トグル（showAdvancedFilters）
+  - 並び替え機能（sortBy）も削除を検討（新着順のみでシンプルに）
+  - カテゴリフィルター（selectedCategory）は残す
+  - シンプルな表示に変更: カテゴリ別タブと新着順の一覧のみ
+  - _Requirements: UX簡素化、プロジェクト一覧の可読性向上_
+
+- [ ] 12. フッターとナビゲーションの視覚的改善
+- [ ] 12.1 フッターのデザインをシンプルに変更
+  - 現状のフッター構造を分析（Footer.tsx）
+    - Navigation セクション: Home, Projects, Resume, Blog, Contact
+    - Legal セクション: Privacy Policy, Sitemap
+    - Connect セクション: GitHub, LinkedIn, Twitter
+  - フッターの目立ちすぎる問題を解決
+    - 背景色を控えめに変更（border-t のみでシンプルに）
+    - パディングを削減（py-8 → py-6）
+    - フォントサイズを小さく（text-sm → text-xs）
+  - Blog リンクをフッターから削除（ブログ記事が0件の場合は非表示）
+  - Contact リンクをフッターから削除（問い合わせフォーム未実装のため）
+  - _Requirements: UX改善、視覚的階層の最適化_
+
+- [ ] 13. スキル表示の改善（経験年数の表示形式）
+- [ ] 13.1 スキルカードの経験年数表示を月単位で表示
+  - SkillCard コンポーネントの経験年数表示を改善
+    - 現状: "0.25年" → 改善後: "3ヶ月"
+    - 現状: "0.5年" → 改善後: "6ヶ月"
+    - 現状: "1年" → そのまま "1年"
+    - 現状: "2.5年" → 改善後: "2年6ヶ月" または "2.5年"（1年未満の場合のみ月単位）
+  - formatExperienceYears ユーティリティ関数を作成（src/lib/utils/skills.ts）
+    - 1年未満の場合: "X ヶ月"
+    - 1年以上の場合: "X 年" または "X 年 Y ヶ月"（小数点がある場合）
+  - SkillCard.tsx の経験年数表示部分を更新
+  - skills.json の yearsOfExperience フィールドはそのまま（数値型を維持）
+  - _Requirements: UX改善、可読性向上_
+
+- [ ] 14. Resumeページのセクション名変更
+- [ ] 14.1 「職歴」を「インターンシップ」に変更
+  - ExperienceSection コンポーネントのタイトルを変更
+    - 現状: "スキル", "職歴", "学歴" → 改善後: "Skill", "Internship", "Education"
+  - Resume ページのセクション構成:
+    - スキル（SkillsSectionWithFilter）
+    - インターンシップ（ExperienceSection）
+    - 学歴（EducationSection）
+  - _Requirements: コンテンツの正確性、ユーザープロフィールの明確化_
+
+- [ ] 15. Contactページの一時的な非表示
+- [ ] 15.1 Contactページをナビゲーションから削除
+  - Navigation.tsx と MobileMenu.tsx から Contact リンクを削除
+  - Footer.tsx から Contact リンクを削除（12.1 で対応）
+  - src/lib/navigation.ts の allNavItems から Contact を削除
+  - Contact ページ自体（src/app/contact/page.tsx）は残す（将来の実装のため）
+  - メールアドレスの直接記載について:
+    - Footer の Connect セクションに Email リンクを追加することを検討
+    - または Resume ページに連絡先情報セクションを追加
+  - 問い合わせフォーム機能（メールAPI）は別プロジェクトとして切り出す可能性あり
+  - _Requirements: UX改善、実装状況に応じた UI 調整_
