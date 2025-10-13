@@ -5,8 +5,6 @@ const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/resume", label: "Resume" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ];
 
 const legalLinks = [

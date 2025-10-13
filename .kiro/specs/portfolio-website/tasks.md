@@ -363,8 +363,8 @@
     - 学歴（EducationSection）
   - _Requirements: コンテンツの正確性、ユーザープロフィールの明確化_
 
-- [ ] 15. Contactページの一時的な非表示
-- [ ] 15.1 Contactページをナビゲーションから削除
+- [x] 15. Contactページの一時的な非表示
+- [x] 15.1 Contactページをナビゲーションから削除
   - Navigation.tsx と MobileMenu.tsx から Contact リンクを削除
   - Footer.tsx から Contact リンクを削除（12.1 で対応）
   - src/lib/navigation.ts の allNavItems から Contact を削除
