@@ -325,8 +325,8 @@
   - シンプルな表示に変更: カテゴリ別タブと新着順の一覧のみ
   - _Requirements: UX簡素化、プロジェクト一覧の可読性向上_
 
-- [ ] 12. フッターとナビゲーションの視覚的改善
-- [ ] 12.1 フッターのデザインをシンプルに変更
+- [x] 12. フッターとナビゲーションの視覚的改善
+- [x] 12.1 フッターのデザインをシンプルに変更
   - 現状のフッター構造を分析（Footer.tsx）
     - Navigation セクション: Home, Projects, Resume, Blog, Contact
     - Legal セクション: Privacy Policy, Sitemap
