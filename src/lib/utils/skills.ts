@@ -47,3 +47,32 @@ export function getUniqueCategories(skills: Skill[]): string[] {
 export function getSkillLevelDefinition(level: SkillLevel): SkillLevelDefinition {
   return SKILL_LEVELS[level];
 }
+
+/**
+ * 経験年数を人間にわかりやすい形式でフォーマット
+ * @param years - 経験年数（数値）
+ * @returns フォーマット済みの文字列
+ * @example
+ * formatExperienceYears(0.25) => "3ヶ月"
+ * formatExperienceYears(0.5) => "6ヶ月"
+ * formatExperienceYears(1) => "1年"
+ * formatExperienceYears(2.5) => "2年6ヶ月"
+ */
+export function formatExperienceYears(years: number): string {
+  if (years < 1) {
+    // 1年未満の場合は月単位で表示
+    const months = Math.round(years * 12);
+    return `${months}ヶ月`;
+  }
+
+  const fullYears = Math.floor(years);
+  const remainingMonths = Math.round((years - fullYears) * 12);
+
+  if (remainingMonths === 0) {
+    // 整数年の場合
+    return `${fullYears}年`;
+  } else {
+    // 年と月の両方を表示
+    return `${fullYears}年${remainingMonths}ヶ月`;
+  }
+}
