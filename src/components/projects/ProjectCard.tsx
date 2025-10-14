@@ -10,6 +10,7 @@ interface ProjectCardProps {
 
 const categoryLabels: Record<string, string> = {
   "web-app": "Webアプリ",
+  research: "研究",
   "mobile-app": "モバイルアプリ",
   library: "ライブラリ",
   tool: "ツール",
@@ -37,12 +38,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
     month: "short",
   });
 
-  // Determine link destination based on feature flag
-  const imageLink = FEATURES.projectDetailPage.enabled
-    ? `/projects/${project.slug}` // Link to detail page when enabled
-    : project.githubUrl || null; // Link to GitHub when disabled (or null if no GitHub URL)
+  // Determine link destination based on priority:
+  // 1. Project-specific showDetailPage setting (highest priority)
+  // 2. Global feature flag (FEATURES.projectDetailPage.enabled)
+  // 3. GitHub URL fallback
+  // 4. No link (null)
+  const shouldShowDetailPage = project.showDetailPage ?? FEATURES.projectDetailPage.enabled;
 
-  const imageLinkLabel = FEATURES.projectDetailPage.enabled
+  const imageLink = shouldShowDetailPage
+    ? `/projects/${project.slug}` // Link to detail page
+    : project.githubUrl || null; // Link to GitHub (or null if no GitHub URL)
+
+  const imageLinkLabel = shouldShowDetailPage
     ? `View ${project.title} details`
     : `View ${project.title} on GitHub`;
 
@@ -58,9 +65,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {/* Image */}
       <div className="bg-foreground/5 relative aspect-video w-full overflow-hidden transition-transform hover:scale-105">
         <Image src={project.imageUrl} alt={project.title} fill className="object-cover" />
-        {/* Link Overlay - conditionally rendered based on feature flag */}
+        {/* Link Overlay - conditionally rendered based on shouldShowDetailPage */}
         {imageLink &&
-          (FEATURES.projectDetailPage.enabled ? (
+          (shouldShowDetailPage ? (
             <Link href={imageLink} className="absolute inset-0" aria-label={imageLinkLabel}>
               <span className="sr-only">View project details</span>
             </Link>

@@ -406,3 +406,23 @@
     - または Resume ページに連絡先情報セクションを追加
   - 問い合わせフォーム機能（メールAPI）は別プロジェクトとして切り出す可能性あり
   - _Requirements: UX改善、実装状況に応じた UI 調整_
+
+- [ ] 16. プロジェクトごとの詳細ページ表示制御
+- [x] 16.1 プロジェクト単位で詳細ページ表示を切り替え可能にする
+  - Project 型に `showDetailPage` フィールドを追加（boolean、デフォルト: false）
+  - ProjectSchema（src/types/project.ts）を更新して新フィールドを追加
+  - content/projects/projects.json の "Deep Learning Research" に `showDetailPage: true` を設定
+  - ProjectCard コンポーネント（src/components/projects/ProjectCard.tsx）のロジック更新
+    - リンク先決定の優先順位:
+      1. プロジェクト個別の `showDetailPage` 設定（プロジェクトごとの制御）
+      2. グローバルな `FEATURES.projectDetailPage.enabled`（全体の制御）
+      3. `githubUrl` へのフォールバック（外部リンク）
+      4. リンクなし（画像のみ表示）
+    - `showDetailPage: true` の場合: `/projects/[slug]` への内部リンク（Link コンポーネント）
+    - `showDetailPage: false` または未設定の場合: GitHub リポジトリへの外部リンク（新規タブ）
+  - テストの追加・更新
+    - ProjectCard.test.tsx に新しいロジックのテストケースを追加
+    - `showDetailPage` が true/false/未定義の各ケースをテスト
+    - グローバルフラグとの組み合わせテスト
+  - 既存プロジェクトへの影響なし（デフォルト値により後方互換性を保証）
+  - _Requirements: UX改善、プロジェクト単位での柔軟な制御、将来の拡張性_
