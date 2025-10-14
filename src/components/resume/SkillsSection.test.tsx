@@ -35,7 +35,7 @@ describe("SkillsSection", () => {
 
   it("セクションタイトルを表示する", () => {
     render(<SkillsSection skills={mockSkills} />);
-    expect(screen.getByRole("heading", { name: /スキル/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Skill/ })).toBeInTheDocument();
   });
 
   it("全てのスキルを表示する", () => {

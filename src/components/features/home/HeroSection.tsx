@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { getPersonalInfo, getAllSkills, getAllProjects } from "@/lib/content";
+import { getPersonalInfo, getAllSkills } from "@/lib/content";
 import { SocialLinks } from "./SocialLinks";
-import { Stats } from "./Stats";
+import { QuickAccessSection } from "@/components/home/QuickAccessSection";
 
-export function HeroSection() {
+export async function HeroSection() {
   const personalInfo = getPersonalInfo();
   const skills = getAllSkills();
-  const projects = getAllProjects();
 
   // 主要スキルを抽出（level 3以上）
   const topSkills = skills.filter((skill) => skill.level >= 3).slice(0, 5);
@@ -16,23 +15,24 @@ export function HeroSection() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-        {/* 左側: プロフィール写真 */}
-        <div className="flex items-center justify-center lg:justify-start">
-          <div className="border-border relative h-64 w-64 overflow-hidden rounded-full border-4 sm:h-80 sm:w-80">
-            <Image
-              src="/images/profile.jpg"
-              alt={personalInfo.name}
-              fill
-              className="object-cover"
-              priority
-            />
+    <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 md:px-8">
+      <div className="grid gap-8 md:grid-cols-[2.5fr_2fr] md:gap-12">
+        {/* 左側: メイン情報 */}
+        <div className="space-y-8 md:max-w-xl">
+          {/* プロフィール画像 */}
+          <div className="flex justify-center md:justify-start">
+            <div className="border-border relative h-40 w-40 overflow-hidden rounded-full border-4 md:h-32 md:w-32">
+              <Image
+                src="/images/profile.jpg"
+                alt={personalInfo.name}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
-        </div>
 
-        {/* 右側: テキスト情報 */}
-        <div className="flex flex-col justify-center space-y-6">
+          {/* 名前・肩書き */}
           <div>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               {personalInfo.name}
@@ -40,7 +40,12 @@ export function HeroSection() {
             <p className="text-foreground/80 mt-3 text-xl sm:text-2xl">{personalInfo.title}</p>
           </div>
 
-          <p className="text-foreground/70 text-lg">{personalInfo.bio}</p>
+          {/* Bio と SocialLinks */}
+          <div className="space-y-4">
+            <p className="text-foreground/70 text-lg">{personalInfo.bio}</p>
+          </div>
+
+          <SocialLinks socialLinks={personalInfo.socialLinks || {}} />
 
           {/* 主要スキル */}
           {topSkills.length > 0 && (
@@ -61,12 +66,12 @@ export function HeroSection() {
             </div>
           )}
 
-          {/* ソーシャルリンク */}
-          <SocialLinks socialLinks={personalInfo.socialLinks || {}} />
-
           {/* 統計情報 */}
-          <Stats projectCount={projects.length} />
+          {/* <Stats projectCount={projects.length} /> */}
         </div>
+
+        {/* 右側: Quick Access Cards (レスポンシブで下に移動) */}
+        <QuickAccessSection />
       </div>
     </section>
   );

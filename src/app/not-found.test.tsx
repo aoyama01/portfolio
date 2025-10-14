@@ -13,7 +13,7 @@ describe("NotFound", () => {
     expect(screen.getByText("Projects")).toBeInTheDocument();
     expect(screen.getByText("Resume")).toBeInTheDocument();
     expect(screen.getByText("Blog")).toBeInTheDocument();
-    expect(screen.getByText("Contact")).toBeInTheDocument();
+    // Contact is removed from navigation (Task 15.1)
   });
 
   it("Homeリンクは表示しない", () => {

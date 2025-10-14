@@ -1,5 +1,5 @@
 import type { Skill } from "@/types/skill";
-import { getSkillLevelDefinition } from "@/lib/utils/skills";
+import { getSkillLevelDefinition, formatExperienceYears } from "@/lib/utils/skills";
 import { Info } from "lucide-react";
 import { Tooltip } from "@/components/ui/Tooltip";
 
@@ -44,7 +44,9 @@ export function SkillCard({ skill }: SkillCardProps) {
             </Tooltip>
           </div>
           {skill.yearsOfExperience && (
-            <span className="text-gray-600 dark:text-gray-400">{skill.yearsOfExperience}年</span>
+            <span className="text-gray-600 dark:text-gray-400">
+              {formatExperienceYears(skill.yearsOfExperience)}
+            </span>
           )}
         </div>
         <div

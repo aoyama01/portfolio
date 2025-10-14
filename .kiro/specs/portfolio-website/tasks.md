@@ -290,3 +290,119 @@
   - セキュリティテストと脆弱性スキャン
   - 本番環境デプロイとドメイン設定完了
   - _Requirements: 全要件の完全実装確認_
+
+## UX改善タスク
+
+- [x] 11. ホームページの UX 改善とナビゲーション最適化
+- [x] 11.1 ホームページに主要ページへのクイックアクセスカードを追加
+  - QuickAccessCard コンポーネントを作成（src/components/home/QuickAccessCard.tsx）
+    - タイトル、説明、アイコン、リンクを含むカード形式
+    - ホバー時にスケールアップとシャドウ表示
+    - アイコンは lucide-react を使用（FolderGit2, FileText, Newspaper）
+  - QuickAccessSection コンポーネントを作成（src/components/home/QuickAccessSection.tsx）
+    - Server Component として実装（async/await 使用）
+    - getExternalBlogPosts() でブログ投稿の有無をチェック
+    - Blogカードは投稿がある場合のみ表示（条件付きレンダリング）
+    - カード配列: Projects, Resume, Blog（条件付き）
+    - QuickAccessCardコンポーネントを使用してカードを生成
+  - HeroSection コンポーネント（src/components/features/home/HeroSection.tsx）に統合
+    - プロフィール情報表示に専念（左側カラム）
+    - QuickAccessSectionを右側カラムとして配置
+  - レスポンシブレイアウト実装
+    - モバイル（<768px）: 1カラム（縦積み）
+    - タブレット/デスクトップ（≥768px）: 2カラムレイアウト（grid-cols-[3fr_2fr]）
+      - 左: プロフィール情報、スキル（md:max-w-xlで幅制限）
+      - 右: QuickAccessSection
+  - セクションパディング
+    - モバイル: py-12（48px）
+    - 640px以上: sm:py-16（64px）
+  - 左側カラムのレスポンシブ幅制限
+    - モバイル: 全幅使用（パディング内）
+    - 768px以上: md:max-w-xl（640px）で制限
+  - ナビゲーションバーをクリックしなくても主要ページに直接アクセス可能
+  - _Requirements: UX改善、アクセシビリティ向上、コンポーネント責任分離_
+
+- [x] 11.2 プロジェクト詳細ページのリンクを一時的に非表示
+  - Feature Flag（設定ファイルベース）を使用してプロジェクト詳細ページへのリンクを条件付きで切り替え
+  - src/lib/config/features.ts に projectDetailPage.enabled: false を追加
+  - src/app/projects/[slug]/ のページファイルは保持（将来の実装のため）
+  - ProjectCard コンポーネントの修正
+    - 現状: カード画像がプロジェクト詳細ページ（/projects/[slug]）へのリンク
+    - 改善後: Feature Flagが無効の場合、カード画像がGitHubリポジトリへの外部リンク（新規タブ）
+    - Feature Flagが有効の場合: 元の詳細ページへの内部リンク（Link コンポーネント）
+    - GitHubURLが無い場合: リンクなし（画像のみ表示）
+  - ProjectCard の GitHubリポジトリとライブデモへの直接リンクはそのまま維持
+  - プロジェクトの詳細情報は GitHub README に記載し、ポートフォリオサイトはシンプルにする方針
+  - 将来的に詳細ページを復元する場合は features.ts の projectDetailPage.enabled を true に変更するのみ
+  - テストの修正: Task 15.1（Contactリンク削除）に関連するテストの期待値を更新
+  - _Requirements: UX改善、情報アーキテクチャの最適化、将来の拡張性_
+
+- [x] 11.3 Projectsページのフィルター機能を一時的に非表示
+  - Feature Flag（設定ファイルベース）を使用して機能を条件付きで非表示
+  - src/lib/config/features.ts に FEATURES 定義を追加
+    - projectFilters.enabled: false（マスタースイッチ）
+    - projectFilters.advancedFilters: false（技術/年度/AND/ORフィルター）
+    - projectFilters.sortOptions: false（並び替えドロップダウン）
+    - projectFilters.categoryFilter: true（カテゴリフィルターは常に表示）
+  - ProjectsClient コンポーネントで FEATURES をインポートして条件分岐
+  - 非表示にした機能:
+    - 技術スタック別フィルタリング（selectedTechnologies, toggleTechnology）
+    - 年度別フィルタリング（selectedYear）
+    - AND/OR 検索モード切り替え（filterMode）
+    - 詳細フィルター表示/非表示トグル（showAdvancedFilters）
+    - 並び替え機能ドロップダウン（sortBy - デフォルトは新着順のまま）
+  - カテゴリフィルター（selectedCategory）は引き続き表示
+  - テストを Feature Flag に対応（describe.skip による条件付きスキップ）
+  - ADR 作成: docs/adr/0001-feature-flags-for-temporary-ui-changes.md
+  - 将来的に機能を復元する場合は features.ts の設定を変更するのみ
+  - _Requirements: UX簡素化、プロジェクト一覧の可読性向上、将来の拡張性_
+
+- [x] 12. フッターとナビゲーションの視覚的改善
+- [x] 12.1 フッターのデザインをシンプルに変更
+  - 現状のフッター構造を分析（Footer.tsx）
+    - Navigation セクション: Home, Projects, Resume, Blog, Contact
+    - Legal セクション: Privacy Policy, Sitemap
+    - Connect セクション: GitHub, LinkedIn, Twitter
+  - フッターの目立ちすぎる問題を解決
+    - 背景色を控えめに変更（border-t のみでシンプルに）
+    - パディングを削減（py-8 → py-6）
+    - フォントサイズを小さく（text-sm → text-xs）
+  - Blog リンクをフッターから削除（ブログ記事が0件の場合は非表示）
+  - Contact リンクをフッターから削除（問い合わせフォーム未実装のため）
+  - _Requirements: UX改善、視覚的階層の最適化_
+
+- [x] 13. スキル表示の改善（経験年数の表示形式）
+- [x] 13.1 スキルカードの経験年数表示を月単位で表示
+  - SkillCard コンポーネントの経験年数表示を改善
+    - 現状: "0.25年" → 改善後: "3ヶ月"
+    - 現状: "0.5年" → 改善後: "6ヶ月"
+    - 現状: "1年" → そのまま "1年"
+    - 現状: "2.5年" → 改善後: "2年6ヶ月" または "2.5年"（1年未満の場合のみ月単位）
+  - formatExperienceYears ユーティリティ関数を作成（src/lib/utils/skills.ts）
+    - 1年未満の場合: "X ヶ月"
+    - 1年以上の場合: "X 年" または "X 年 Y ヶ月"（小数点がある場合）
+  - SkillCard.tsx の経験年数表示部分を更新
+  - skills.json の yearsOfExperience フィールドはそのまま（数値型を維持）
+  - _Requirements: UX改善、可読性向上_
+
+- [x] 14. Resumeページのセクション名変更
+- [x] 14.1 「職歴」を「インターンシップ」に変更
+  - ExperienceSection コンポーネントのタイトルを変更
+    - 現状: "スキル", "職歴", "学歴" → 改善後: "Skill", "Internship", "Education"
+  - Resume ページのセクション構成:
+    - スキル（SkillsSectionWithFilter）
+    - インターンシップ（ExperienceSection）
+    - 学歴（EducationSection）
+  - _Requirements: コンテンツの正確性、ユーザープロフィールの明確化_
+
+- [x] 15. Contactページの一時的な非表示
+- [x] 15.1 Contactページをナビゲーションから削除
+  - Navigation.tsx と MobileMenu.tsx から Contact リンクを削除
+  - Footer.tsx から Contact リンクを削除（12.1 で対応）
+  - src/lib/navigation.ts の allNavItems から Contact を削除
+  - Contact ページ自体（src/app/contact/page.tsx）は残す（将来の実装のため）
+  - メールアドレスの直接記載について:
+    - Footer の Connect セクションに Email リンクを追加することを検討
+    - または Resume ページに連絡先情報セクションを追加
+  - 問い合わせフォーム機能（メールAPI）は別プロジェクトとして切り出す可能性あり
+  - _Requirements: UX改善、実装状況に応じた UI 調整_

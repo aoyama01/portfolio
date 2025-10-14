@@ -10,7 +10,7 @@ export function EducationSection({ education }: EducationSectionProps) {
   if (education.length === 0) {
     return (
       <section className="py-8">
-        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">学歴</h2>
+        <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">Education</h2>
         <p className="text-gray-600 dark:text-gray-400">学歴情報がありません</p>
       </section>
     );
@@ -20,7 +20,7 @@ export function EducationSection({ education }: EducationSectionProps) {
 
   return (
     <section className="py-8">
-      <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">学歴</h2>
+      <h2 className="mb-6 text-3xl font-bold text-gray-900 dark:text-gray-100">Education</h2>
 
       <div className="relative">
         {/* Timeline indicator */}
