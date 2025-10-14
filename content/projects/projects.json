@@ -31,16 +31,15 @@
     },
     {
       "id": "3",
-      "slug": "research-on-deep-learning",
-      "title": "Deep Learning Research",
-      "description": "深層学習を用いた画像認識アルゴリズムの研究。CNNモデルの設計、データ拡張、ハイパーパラメータチューニングを実施。",
-      "technologies": ["Python", "TensorFlow", "Keras", "NumPy", "Pandas"],
+      "slug": "eeg-hrv-correlation-analysis",
+      "title": "睡眠中脳波活動と心拍変動特性の長時間相互相関解析",
+      "description": "睡眠中の脳波と心拍変動の1/fゆらぎを解析し、両者の長時間相関を定量評価。DMCA手法により、脳波活動と心拍変動が独立して最適化されていることを実証。",
+      "technologies": ["Python", "NumPy", "SciPy", "Anaconda"],
       "category": "research",
-      "startDate": "2024-06-01",
-      "endDate": "2024-12-31",
-      "status": "completed",
-      "imageUrl": "/images/projects/research-on-deep-learning.png",
-      "detailContent": "research-on-deep-learning",
+      "startDate": "2024-04-01",
+      "status": "in-progress",
+      "imageUrl": "/images/projects/eeg-hrv-correlation-analysis.png",
+      "detailContent": "eeg-hrv-correlation-analysis",
       "showDetailPage": true
     }
   ]

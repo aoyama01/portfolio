@@ -76,6 +76,20 @@
       "status": "archived",
       "githubUrl": "https://github.com/username/ws-chat",
       "imageUrl": "/images/projects/ws-chat.png"
+    },
+    {
+      "id": "7",
+      "slug": "research-on-deep-learning",
+      "title": "Deep Learning Research",
+      "description": "深層学習を用いた画像認識アルゴリズムの研究。CNNモデルの設計、データ拡張、ハイパーパラメータチューニングを実施。",
+      "technologies": ["Python", "TensorFlow", "Keras", "NumPy", "Pandas"],
+      "category": "research",
+      "startDate": "2024-06-01",
+      "endDate": "2024-12-31",
+      "status": "completed",
+      "imageUrl": "/images/projects/research-on-deep-learning.png",
+      "detailContent": "research-on-deep-learning",
+      "showDetailPage": true
     }
   ]
 }
