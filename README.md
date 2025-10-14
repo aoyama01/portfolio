@@ -1,10 +1,10 @@
 # Portfolio Website
 
-[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.1.1-blue)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-19.1.1-blue)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 
 モダンなWeb技術を活用した個人ポートフォリオサイト。Next.js 15 + React 19を使用し、プロジェクト紹介、ブログシステム、スキル紹介を実装。キャリア形成において、技術力・実績・人物像を効果的に伝えることを目的としています。
+
+![ホーム](public/images/screenshots/home.png)
 
 ## 目次
 
@@ -24,10 +24,10 @@
 
 従来のレジュメでは表現しきれない**実装力・問題解決能力・継続的な学習姿勢**を可視化したいという想いから開発しました。キャリア形成において関わる採用担当者やエンジニアの方に対して以下を効果的に伝えることを目標としています：
 
-- **技術スタックの幅広さと深さ**: 実務で培った技術力の可視化
+- **技術スタックの幅広さと深さ**: 技術力の可視化
 - **プロジェクト実装力**: 設計から実装、デプロイまでの一貫した経験
-- **コード品質へのこだわり**: TypeScript strict mode、テスト、セキュリティ対策の徹底
-- **継続的な学習姿勢**: ブログを通じた技術発信と知識の共有
+- **コード品質へのこだわり**: TypeScript strict mode、テスト、セキュリティ対策
+- **継続的な学習姿勢**: 技術力発信と知識の共有
 
 技術選択自体もポートフォリオとしての価値を持つよう、最新のベストプラクティスを実装しています。
 
@@ -43,8 +43,7 @@
 - **ホーム**: プロフィール、主要スキル、クイックアクセス
 - **プロジェクト一覧**: 実装したプロジェクトの詳細紹介
 - **レジュメ**: スキル、経験、学歴の一覧
-- **ブログ**: 技術記事とナレッジの共有
-- **お問い合わせ**: セキュアなコンタクトフォーム
+- **ブログ**: 技術記事とナレッジの共有（予定）
 
 ## 主要機能
 
@@ -73,6 +72,7 @@
 ### ブログシステム
 
 技術記事やナレッジをMDX形式で管理。シンタックスハイライトやGitHub Flavored Markdown対応で読みやすい記事を提供。
+（準備中の状態なのでナビゲーションバーには表示されません）
 
 ![ブログ](public/images/screenshots/blog.png)
 
@@ -402,9 +402,8 @@ RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
 
 ### 継続的な改善
 
-- **週次**: コンテンツ更新（ブログ記事、プロジェクト追加）
-- **月次**: スキル・経験の更新、依存関係のアップデート
-- **四半期**: デザイン見直し、新機能追加、セキュリティ監査
+- **月次**: コンテンツ更新（ブログ記事、プロジェクト追加）、新機能追加
+- **四半期**: スキル・経験の更新、依存関係のアップデート、デザイン見直し
 
 ---
 
