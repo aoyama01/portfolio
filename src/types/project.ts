@@ -3,6 +3,7 @@ import { z } from "zod";
 // Project Category Types
 export const ProjectCategorySchema = z.enum([
   "web-app",
+  "research",
   "mobile-app",
   "library",
   "tool",
