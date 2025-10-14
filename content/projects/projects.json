@@ -40,7 +40,8 @@
       "endDate": "2024-12-31",
       "status": "completed",
       "imageUrl": "/images/projects/research-on-deep-learning.png",
-      "detailContent": "research-on-deep-learning"
+      "detailContent": "research-on-deep-learning",
+      "showDetailPage": true
     }
   ]
 }

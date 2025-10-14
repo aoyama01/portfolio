@@ -15,6 +15,7 @@ type FilterMode = "AND" | "OR";
 
 const categoryLabels: Record<ProjectCategory, string> = {
   "web-app": "Webアプリ",
+  research: "研究",
   "mobile-app": "モバイルアプリ",
   library: "ライブラリ",
   tool: "ツール",
