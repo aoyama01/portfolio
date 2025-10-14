@@ -54,6 +54,7 @@
 ![プロジェクト一覧](public/images/screenshots/projects.png)
 
 **機能:**
+
 - プロジェクト一覧表示（カード形式）
 - プロジェクト詳細ページ（MDX対応）
 - 技術スタック・カテゴリー別フィルタリング
@@ -65,6 +66,7 @@
 ![レジュメ](public/images/screenshots/resume.png)
 
 **機能:**
+
 - スキルセクション（カテゴリー別表示、習熟度レベル付き）
 - 経験セクション（職歴、実績）
 - 学歴セクション
@@ -77,6 +79,7 @@
 ![ブログ](public/images/screenshots/blog.png)
 
 **機能:**
+
 - MDXによるブログ記事管理
 - シンタックスハイライト（rehype-highlight）
 - GitHub Flavored Markdown対応（remark-gfm）
@@ -103,50 +106,50 @@
 
 ### Frontend
 
-| 技術 | バージョン | 用途 |
-|------|----------|------|
-| [Next.js](https://nextjs.org/) | 15.5.4 | フレームワーク（App Router使用） |
-| [React](https://react.dev/) | 19.1.1 | UIライブラリ（Server Components対応） |
-| [TypeScript](https://www.typescriptlang.org/) | ^5 | 型安全な開発（Strict mode有効） |
-| [Tailwind CSS](https://tailwindcss.com/) | ^4 | スタイリング（JIT コンパイル） |
+| 技術                                          | バージョン | 用途                                  |
+| --------------------------------------------- | ---------- | ------------------------------------- |
+| [Next.js](https://nextjs.org/)                | 15.5.4     | フレームワーク（App Router使用）      |
+| [React](https://react.dev/)                   | 19.1.1     | UIライブラリ（Server Components対応） |
+| [TypeScript](https://www.typescriptlang.org/) | ^5         | 型安全な開発（Strict mode有効）       |
+| [Tailwind CSS](https://tailwindcss.com/)      | ^4         | スタイリング（JIT コンパイル）        |
 
 ### Content Management
 
-| 技術 | バージョン | 用途 |
-|------|----------|------|
-| [@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx) | ^15.5.4 | MDX統合 |
-| [next-mdx-remote-client](https://www.npmjs.com/package/next-mdx-remote-client) | ^2.1.6 | リモートMDX処理 |
-| [gray-matter](https://github.com/jonschlinkert/gray-matter) | ^4.0.3 | Frontmatter解析 |
-| [rehype-highlight](https://github.com/rehypejs/rehype-highlight) | ^7.0.2 | シンタックスハイライト |
-| [rehype-slug](https://github.com/rehypejs/rehype-slug) | ^6.0.0 | 見出しID自動生成 |
-| [remark-gfm](https://github.com/remarkjs/remark-gfm) | ^4.0.1 | GitHub Flavored Markdown |
+| 技術                                                                               | バージョン | 用途                     |
+| ---------------------------------------------------------------------------------- | ---------- | ------------------------ |
+| [@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx) | ^15.5.4    | MDX統合                  |
+| [next-mdx-remote-client](https://www.npmjs.com/package/next-mdx-remote-client)     | ^2.1.6     | リモートMDX処理          |
+| [gray-matter](https://github.com/jonschlinkert/gray-matter)                        | ^4.0.3     | Frontmatter解析          |
+| [rehype-highlight](https://github.com/rehypejs/rehype-highlight)                   | ^7.0.2     | シンタックスハイライト   |
+| [rehype-slug](https://github.com/rehypejs/rehype-slug)                             | ^6.0.0     | 見出しID自動生成         |
+| [remark-gfm](https://github.com/remarkjs/remark-gfm)                               | ^4.0.1     | GitHub Flavored Markdown |
 
 ### Development Tools
 
-| 技術 | バージョン | 用途 |
-|------|----------|------|
-| [ESLint](https://eslint.org/) | ^9 | 静的コード解析 |
-| [Prettier](https://prettier.io/) | ^3.3.0 | コードフォーマット |
-| [Husky](https://typicode.github.io/husky/) | ^9.0.0 | Git hooks管理 |
-| [lint-staged](https://github.com/lint-staged/lint-staged) | ^15.2.0 | ステージファイルのみLint |
-| [Jest](https://jestjs.io/) | ^29.7.0 | テストフレームワーク |
-| [Testing Library](https://testing-library.com/) | ^16.0.0 | React コンポーネントテスト |
+| 技術                                                      | バージョン | 用途                       |
+| --------------------------------------------------------- | ---------- | -------------------------- |
+| [ESLint](https://eslint.org/)                             | ^9         | 静的コード解析             |
+| [Prettier](https://prettier.io/)                          | ^3.3.0     | コードフォーマット         |
+| [Husky](https://typicode.github.io/husky/)                | ^9.0.0     | Git hooks管理              |
+| [lint-staged](https://github.com/lint-staged/lint-staged) | ^15.2.0    | ステージファイルのみLint   |
+| [Jest](https://jestjs.io/)                                | ^29.7.0    | テストフレームワーク       |
+| [Testing Library](https://testing-library.com/)           | ^16.0.0    | React コンポーネントテスト |
 
 ### Validation & Utilities
 
-| 技術 | バージョン | 用途 |
-|------|----------|------|
-| [Zod](https://zod.dev/) | ^4.1.11 | スキーマバリデーション |
-| [date-fns](https://date-fns.org/) | ^4.1.0 | 日付操作ライブラリ |
-| [lucide-react](https://lucide.dev/) | ^0.544.0 | アイコンライブラリ |
+| 技術                                | バージョン | 用途                   |
+| ----------------------------------- | ---------- | ---------------------- |
+| [Zod](https://zod.dev/)             | ^4.1.11    | スキーマバリデーション |
+| [date-fns](https://date-fns.org/)   | ^4.1.0     | 日付操作ライブラリ     |
+| [lucide-react](https://lucide.dev/) | ^0.544.0   | アイコンライブラリ     |
 
 ### DevOps & Infrastructure
 
-| 技術 | 用途 |
-|------|------|
-| [Vercel](https://vercel.com/) | ホスティング、CI/CD、Analytics |
-| [GitHub Actions](https://github.com/features/actions) | CI/CDパイプライン |
-| Git | バージョン管理 |
+| 技術                                                  | 用途                           |
+| ----------------------------------------------------- | ------------------------------ |
+| [Vercel](https://vercel.com/)                         | ホスティング、CI/CD、Analytics |
+| [GitHub Actions](https://github.com/features/actions) | CI/CDパイプライン              |
+| Git                                                   | バージョン管理                 |
 
 ## セットアップ
 
@@ -370,35 +373,17 @@ RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
 
 ### 環境変数の説明
 
-| 変数名 | 必須 | 説明 |
-|--------|------|------|
-| `NODE_ENV` | ○ | 実行環境（development/production） |
-| `NEXT_PUBLIC_SITE_URL` | ○ | サイトのベースURL |
-| `NEXT_PUBLIC_SITE_NAME` | ○ | サイト名 |
-| `GITHUB_TOKEN` | × | GitHub API アクセス用トークン |
-| `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` | × | Google Analytics測定ID |
-| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` | × | reCAPTCHA サイトキー |
-| `RECAPTCHA_SECRET_KEY` | × | reCAPTCHA シークレットキー |
+| 変数名                            | 必須 | 説明                               |
+| --------------------------------- | ---- | ---------------------------------- |
+| `NODE_ENV`                        | ○    | 実行環境（development/production） |
+| `NEXT_PUBLIC_SITE_URL`            | ○    | サイトのベースURL                  |
+| `NEXT_PUBLIC_SITE_NAME`           | ○    | サイト名                           |
+| `GITHUB_TOKEN`                    | ×    | GitHub API アクセス用トークン      |
+| `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` | ×    | Google Analytics測定ID             |
+| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`  | ×    | reCAPTCHA サイトキー               |
+| `RECAPTCHA_SECRET_KEY`            | ×    | reCAPTCHA シークレットキー         |
 
 ## 今後の展望
-
-### Phase 2: 機能拡張（予定）
-
-- [ ] **Headless CMS統合**: Contentful/Sanityによる直感的なコンテンツ管理
-- [ ] **国際化対応（i18n）**: 日本語/英語の切り替え機能
-- [ ] **PDF Export機能**: レジュメのワンクリックPDF生成
-- [ ] **お問い合わせフォーム実装**: reCAPTCHA統合によるセキュアなフォーム
-- [ ] **ブログ検索機能**: 全文検索とタグフィルタリング
-- [ ] **アニメーション強化**: Framer Motionによる滑らかなページ遷移
-
-### Phase 3: 最適化・高度な機能（予定）
-
-- [ ] **Analytics統合**: Google Analytics 4 / Vercel Analytics
-- [ ] **A/Bテスト**: 効果的なCTA配置の検証
-- [ ] **E2Eテスト**: Playwrightによる統合テスト
-- [ ] **Storybook統合**: コンポーネントカタログの構築
-- [ ] **PWA対応**: オフライン閲覧とプッシュ通知
-- [ ] **パフォーマンス監視**: Lighthouse CI / Sentry統合
 
 ### 継続的な改善
 
