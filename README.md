@@ -1,5 +1,10 @@
 # Portfolio Website
 
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1.1-blue)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 モダンなWeb技術を活用した個人ポートフォリオサイト。Next.js 15 + React 19を使用し、プロジェクト紹介、ブログシステム、スキル紹介を実装。キャリア形成において、技術力・実績・人物像を効果的に伝えることを目的としています。
 
 ## 目次
@@ -44,23 +49,41 @@
 
 ## 主要機能
 
-### 実装済み機能
+### ポートフォリオ管理
 
-- **ポートフォリオ管理**
-  - プロジェクト一覧表示（カード形式）
-  - プロジェクト詳細ページ（MDX対応）
-  - 技術スタック・カテゴリー別フィルタリング
+実装したプロジェクトをカード形式で表示。技術スタックやカテゴリーでフィルタリング可能。各プロジェクト詳細ページではMDX形式で開発背景や工夫した点を紹介。
 
-- **レジュメ管理**
-  - スキルセクション（カテゴリー別表示、習熟度レベル付き）
-  - 経験セクション（職歴、実績）
-  - 学歴セクション
+![プロジェクト一覧](public/images/screenshots/projects.png)
 
-- **ブログシステム**
-  - MDXによるブログ記事管理
-  - シンタックスハイライト（rehype-highlight）
-  - GitHub Flavored Markdown対応（remark-gfm）
-  - 外部ブログ連携機能
+**機能:**
+- プロジェクト一覧表示（カード形式）
+- プロジェクト詳細ページ（MDX対応）
+- 技術スタック・カテゴリー別フィルタリング
+
+### レジュメ管理
+
+スキル・経験・学歴を体系的に整理。各スキルには習熟度レベルを表示し、技術力を可視化。
+
+![レジュメ](public/images/screenshots/resume.png)
+
+**機能:**
+- スキルセクション（カテゴリー別表示、習熟度レベル付き）
+- 経験セクション（職歴、実績）
+- 学歴セクション
+
+### ブログシステム
+
+技術記事やナレッジをMDX形式で管理。シンタックスハイライトやGitHub Flavored Markdown対応で読みやすい記事を提供。
+
+![ブログ](public/images/screenshots/blog.png)
+
+**機能:**
+- MDXによるブログ記事管理
+- シンタックスハイライト（rehype-highlight）
+- GitHub Flavored Markdown対応（remark-gfm）
+- 外部ブログ連携機能
+
+### UI/UX・セキュリティ・SEO
 
 - **UI/UX**
   - ダークモード対応（システム設定連動）
@@ -237,62 +260,21 @@ vercel --prod
 ```
 portfolio/
 ├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── page.tsx            # ホームページ
-│   │   ├── layout.tsx          # ルートレイアウト
-│   │   ├── globals.css         # グローバルスタイル
-│   │   ├── projects/           # プロジェクト一覧・詳細
-│   │   ├── resume/             # レジュメページ
-│   │   ├── blog/               # ブログ一覧・詳細
-│   │   ├── contact/            # お問い合わせ
-│   │   ├── privacy/            # プライバシーポリシー
-│   │   ├── actions/            # Server Actions
-│   │   └── sitemap.ts          # サイトマップ生成
+│   ├── app/                    # Next.js App Router（ページ・レイアウト）
 │   ├── components/             # Reactコンポーネント
 │   │   ├── ui/                 # 基本UIコンポーネント
 │   │   ├── layout/             # レイアウトコンポーネント
-│   │   ├── features/           # 機能別コンポーネント
-│   │   ├── home/               # ホームページコンポーネント
-│   │   ├── projects/           # プロジェクト関連
-│   │   ├── resume/             # レジュメ関連
-│   │   ├── blog/               # ブログ関連
-│   │   ├── contact/            # コンタクトフォーム
-│   │   └── mdx/                # MDXコンポーネント
-│   ├── lib/                    # ユーティリティ・設定
-│   │   ├── content.ts          # コンテンツ取得関数
-│   │   ├── mdx.ts              # MDX処理
-│   │   ├── navigation.ts       # ナビゲーション設定
-│   │   ├── skills.ts           # スキルデータ処理
-│   │   ├── external-blog.ts    # 外部ブログ統合
-│   │   └── utils/              # ユーティリティ関数
-│   ├── providers/              # Context Providers
-│   │   └── ThemeProvider.tsx   # ダークモード管理
-│   └── types/                  # TypeScript型定義
-│       ├── project.ts          # プロジェクト型
-│       ├── skill.ts            # スキル型
-│       ├── blog.ts             # ブログ型
-│       └── common.ts           # 共通型
-├── content/                    # コンテンツファイル
+│   │   └── features/           # 機能別コンポーネント
+│   ├── lib/                    # ユーティリティ・ビジネスロジック
+│   ├── types/                  # TypeScript型定義
+│   └── providers/              # Context Providers
+├── content/                    # コンテンツファイル（JSON/MDX）
 │   ├── projects/               # プロジェクト情報
-│   │   ├── projects.json       # プロジェクト一覧
-│   │   └── details/            # プロジェクト詳細（MDX）
-│   ├── blog/                   # ブログ記事（MDX）
-│   └── data/                   # 静的データ
-│       ├── personal.json       # 個人情報
-│       ├── skills.json         # スキル情報
-│       ├── experience.json     # 職歴情報
-│       └── education.json      # 学歴情報
-├── public/                     # 静的ファイル
-│   ├── images/                 # 画像ファイル
-│   └── robots.txt              # クローラー設定
+│   ├── blog/                   # ブログ記事
+│   └── data/                   # 静的データ（スキル・経験・学歴）
+├── public/                     # 静的ファイル（画像等）
 ├── docs/                       # プロジェクトドキュメント
-│   ├── prd.md                  # 要件定義書
-│   ├── technical-design.md     # 技術設計書
-│   ├── deployment.md           # デプロイ手順
-│   └── adr/                    # アーキテクチャ決定記録
-└── .github/                    # GitHub設定
-    └── workflows/              # GitHub Actions
-
+└── .github/workflows/          # CI/CDパイプライン
 ```
 
 ## こだわり・工夫した点
