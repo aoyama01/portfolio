@@ -1,363 +1,395 @@
 # Portfolio Website
 
-A modern portfolio platform built with Next.js 15, showcasing projects, blog posts, and professional experience. This site demonstrates technical expertise through its implementation while effectively presenting skills and achievements.
+[![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-19.1.1-blue)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 
-## 🎯 Project Overview
+モダンなWeb技術を活用した個人ポートフォリオサイト。Next.js 15 + React 19を使用し、プロジェクト紹介、ブログシステム、スキル紹介を実装。キャリア形成において、技術力・実績・人物像を効果的に伝えることを目的としています。
 
-This portfolio website serves multiple purposes:
+![ホーム](public/images/screenshots/home.png)
 
-- **Job Applications**: Showcase technical skills and projects to recruiters and hiring managers
-- **Technical Interviews**: Demonstrate implementation capabilities and problem-solving approaches
-- **Career Documentation**: Maintain a comprehensive record of skills and growth
-- **Professional Networking**: Create connections within the industry
+## 目次
 
-## 🚀 Tech Stack
+- [開発した背景](#開発した背景)
+- [デモ](#デモ)
+- [主要機能](#主要機能)
+- [使用技術](#使用技術)
+- [セットアップ](#セットアップ)
+- [ビルド・デプロイ](#ビルドデプロイ)
+- [ディレクトリ構造](#ディレクトリ構造)
+- [こだわり・工夫した点](#こだわり工夫した点)
+- [テストの実行](#テストの実行)
+- [環境変数の設定](#環境変数の設定)
+- [今後の展望](#今後の展望)
 
-### Core Framework
+## 開発した背景
 
-- **Next.js 15.5.4** - React framework with App Router
-- **React 19.1.1** - UI library
-- **TypeScript 5** - Type-safe JavaScript
+従来のレジュメでは表現しきれない**実装力・問題解決能力・継続的な学習姿勢**を可視化したいという想いから開発しました。キャリア形成において関わる採用担当者やエンジニアの方に対して以下を効果的に伝えることを目標としています：
 
-### Styling & UI
+- **技術スタックの幅広さと深さ**: 技術力の可視化
+- **プロジェクト実装力**: 設計から実装、デプロイまでの一貫した経験
+- **コード品質へのこだわり**: TypeScript strict mode、テスト、セキュリティ対策
+- **継続的な学習姿勢**: 技術力発信と知識の共有
 
-- **Tailwind CSS 4** - Utility-first CSS framework with JIT compilation
-- **Lucide React** - Icon library
-- **@tailwindcss/typography** - Beautiful typographic defaults for MDX content
+技術選択自体もポートフォリオとしての価値を持つよう、最新のベストプラクティスを実装しています。
+
+## デモ
+
+プロジェクトは以下の環境にデプロイされています：
+
+- **本番環境**: https://www.aoyama01.com
+- **開発環境**: Vercel Preview Deployments
+
+### 主要ページ
+
+- **ホーム**: プロフィール、主要スキル、クイックアクセス
+- **プロジェクト一覧**: 実装したプロジェクトの詳細紹介
+- **レジュメ**: スキル、経験、学歴の一覧
+- **ブログ**: 技術記事とナレッジの共有（予定）
+
+## 主要機能
+
+### ポートフォリオ管理
+
+実装したプロジェクトをカード形式で表示。技術スタックやカテゴリーでフィルタリング可能。各プロジェクト詳細ページではMDX形式で開発背景や工夫した点を紹介。
+
+![プロジェクト一覧](public/images/screenshots/projects.png)
+
+**機能:**
+
+- プロジェクト一覧表示（カード形式）
+- プロジェクト詳細ページ（MDX対応）
+- 技術スタック・カテゴリー別フィルタリング
+
+### レジュメ管理
+
+スキル・経験・学歴を体系的に整理。各スキルには習熟度レベルを表示し、技術力を可視化。
+
+![レジュメ](public/images/screenshots/resume.png)
+
+**機能:**
+
+- スキルセクション（カテゴリー別表示、習熟度レベル付き）
+- 経験セクション（職歴、実績）
+- 学歴セクション
+
+### ブログシステム
+
+技術記事やナレッジをMDX形式で管理。シンタックスハイライトやGitHub Flavored Markdown対応で読みやすい記事を提供。
+（準備中の状態なのでナビゲーションバーには表示されません）
+
+![ブログ](public/images/screenshots/blog.png)
+
+**機能:**
+
+- MDXによるブログ記事管理
+- シンタックスハイライト（rehype-highlight）
+- GitHub Flavored Markdown対応（remark-gfm）
+- 外部ブログ連携機能
+
+### UI/UX・セキュリティ・SEO
+
+- **UI/UX**
+  - ダークモード対応（システム設定連動）
+  - レスポンシブデザイン（モバイルファースト）
+  - アクセシビリティ対応（WCAG 2.1 Level AA準拠）
+
+- **セキュリティ**
+  - セキュリティヘッダー設定（CSP, HSTS, X-Frame-Options等）
+  - フォームバリデーション（Zod統合）
+  - XSS/CSRF対策
+
+- **SEO最適化**
+  - 動的サイトマップ生成
+  - Meta tags最適化
+  - セマンティックHTML構造
+
+## 使用技術
+
+### Frontend
+
+| 技術                                          | バージョン | 用途                                  |
+| --------------------------------------------- | ---------- | ------------------------------------- |
+| [Next.js](https://nextjs.org/)                | 15.5.4     | フレームワーク（App Router使用）      |
+| [React](https://react.dev/)                   | 19.1.1     | UIライブラリ（Server Components対応） |
+| [TypeScript](https://www.typescriptlang.org/) | ^5         | 型安全な開発（Strict mode有効）       |
+| [Tailwind CSS](https://tailwindcss.com/)      | ^4         | スタイリング（JIT コンパイル）        |
 
 ### Content Management
 
-- **MDX** - Markdown with React components for blog posts
-- **@next/mdx** - Next.js MDX integration
-- **gray-matter** - Frontmatter parsing
-- **rehype-highlight** - Syntax highlighting for code blocks
-- **remark-gfm** - GitHub Flavored Markdown support
+| 技術                                                                               | バージョン | 用途                     |
+| ---------------------------------------------------------------------------------- | ---------- | ------------------------ |
+| [@next/mdx](https://nextjs.org/docs/app/building-your-application/configuring/mdx) | ^15.5.4    | MDX統合                  |
+| [next-mdx-remote-client](https://www.npmjs.com/package/next-mdx-remote-client)     | ^2.1.6     | リモートMDX処理          |
+| [gray-matter](https://github.com/jonschlinkert/gray-matter)                        | ^4.0.3     | Frontmatter解析          |
+| [rehype-highlight](https://github.com/rehypejs/rehype-highlight)                   | ^7.0.2     | シンタックスハイライト   |
+| [rehype-slug](https://github.com/rehypejs/rehype-slug)                             | ^6.0.0     | 見出しID自動生成         |
+| [remark-gfm](https://github.com/remarkjs/remark-gfm)                               | ^4.0.1     | GitHub Flavored Markdown |
 
 ### Development Tools
 
-- **ESLint 9** - Code linting with Next.js recommended rules
-- **Prettier 3** - Code formatting with Tailwind plugin
-- **Husky** - Git hooks for quality gates
-- **lint-staged** - Pre-commit file processing
+| 技術                                                      | バージョン | 用途                       |
+| --------------------------------------------------------- | ---------- | -------------------------- |
+| [ESLint](https://eslint.org/)                             | ^9         | 静的コード解析             |
+| [Prettier](https://prettier.io/)                          | ^3.3.0     | コードフォーマット         |
+| [Husky](https://typicode.github.io/husky/)                | ^9.0.0     | Git hooks管理              |
+| [lint-staged](https://github.com/lint-staged/lint-staged) | ^15.2.0    | ステージファイルのみLint   |
+| [Jest](https://jestjs.io/)                                | ^29.7.0    | テストフレームワーク       |
+| [Testing Library](https://testing-library.com/)           | ^16.0.0    | React コンポーネントテスト |
 
-### Testing
+### Validation & Utilities
 
-- **Jest 29** - JavaScript testing framework
-- **@testing-library/react** - React component testing utilities
-- **@testing-library/jest-dom** - Custom Jest matchers for DOM
+| 技術                                | バージョン | 用途                   |
+| ----------------------------------- | ---------- | ---------------------- |
+| [Zod](https://zod.dev/)             | ^4.1.11    | スキーマバリデーション |
+| [date-fns](https://date-fns.org/)   | ^4.1.0     | 日付操作ライブラリ     |
+| [lucide-react](https://lucide.dev/) | ^0.544.0   | アイコンライブラリ     |
 
-### Utilities
+### DevOps & Infrastructure
 
-- **date-fns** - Date formatting and manipulation
-- **Zod** - Schema validation for forms
+| 技術                                                  | 用途                           |
+| ----------------------------------------------------- | ------------------------------ |
+| [Vercel](https://vercel.com/)                         | ホスティング、CI/CD、Analytics |
+| [GitHub Actions](https://github.com/features/actions) | CI/CDパイプライン              |
+| Git                                                   | バージョン管理                 |
 
-## 📋 Prerequisites
+## セットアップ
 
-- **Node.js**: 20.x or higher
-- **npm**: 10.x or higher
-- **Git**: For version control
+### 前提条件
 
-## 🛠️ Installation
+以下がインストールされていることを確認してください：
 
-1. **Clone the repository**
+- **Node.js**: 20.x 以上
+- **npm**: 10.x 以上
+- **Git**: 2.x 以上
 
-   ```bash
-   git clone <repository-url>
-   cd portfolio
-   ```
+### インストール
 
-2. **Install dependencies**
+1. リポジトリをクローン
 
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/aoyama01/portfolio.git
+cd portfolio
+```
 
-3. **Set up environment variables**
+2. 依存関係をインストール
 
-   ```bash
-   cp .env.example .env.local
-   ```
+```bash
+npm install
+```
 
-   Edit `.env.local` with your configuration:
+3. 環境変数を設定
 
-   ```bash
-   # Required for development
-   NODE_ENV=development
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
-   NEXT_PUBLIC_SITE_NAME="Portfolio Website"
+```bash
+cp .env.local .env.local
+```
 
-   # Optional: GitHub API for repository stats
-   GITHUB_TOKEN=your_github_token
+`.env.local` を編集して必要な環境変数を設定してください（詳細は[環境変数の設定](#環境変数の設定)を参照）。
 
-   # Required for production: Contact form
-   RECAPTCHA_SECRET_KEY=your_recaptcha_secret
-   RECAPTCHA_SITE_KEY=your_recaptcha_site_key
-
-   # Required for production: Email service
-   EMAIL_SERVICE_API_KEY=your_email_api_key
-   EMAIL_FROM=your.email@example.com
-   EMAIL_TO=your.email@example.com
-   ```
-
-## 🚦 Getting Started
-
-### Development Server
-
-Start the development server:
+### 開発サーバーの起動
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてください。
 
-### Building for Production
+### その他の開発コマンド
 
-Create an optimized production build:
+```bash
+# 型チェック
+npm run type-check
+
+# Lint実行
+npm run lint
+
+# Lint自動修正
+npm run lint:fix
+
+# コードフォーマット
+npm run format
+
+# テスト実行
+npm test
+
+# テスト（Watch mode）
+npm run test:watch
+```
+
+## ビルド・デプロイ
+
+### 本番ビルド
 
 ```bash
 npm run build
 ```
 
-### Running Production Build Locally
+ビルド成果物は `.next` ディレクトリに生成されます。
 
-After building, start the production server:
+### 本番サーバーの起動（ローカル確認）
 
 ```bash
-npm start
+npm run start
 ```
 
-## 📝 Available Scripts
+### Vercelへのデプロイ
 
-### Development
+#### 自動デプロイ（推奨）
 
-- `npm run dev` - Start Next.js development server (port 3000)
-- `npm run build` - Create production build
-- `npm start` - Start production server
+`main` ブランチへのプッシュで自動的に本番環境にデプロイされます。
 
-### Code Quality
+```bash
+git add .
+git commit -m "feat: add new feature"
+git push origin main
+```
 
-- `npm run lint` - Run ESLint to check code issues
-- `npm run lint:fix` - Automatically fix ESLint issues
-- `npm run format` - Format code with Prettier
-- `npm run type-check` - Run TypeScript type checking
+#### 手動デプロイ
 
-### Testing
+Vercel CLIを使用した手動デプロイ：
 
-- `npm test` - Run Jest tests
-- `npm run test:watch` - Run tests in watch mode
+```bash
+# Vercel CLIのインストール（初回のみ）
+npm i -g vercel
 
-## 📁 Project Structure
+# デプロイ
+vercel
+
+# 本番環境へのデプロイ
+vercel --prod
+```
+
+## ディレクトリ構造
 
 ```
 portfolio/
-├── .claude/              # Claude Code configuration and commands
-├── .kiro/                # Kiro spec-driven development files
-│   ├── steering/         # Project guidance documents
-│   └── specs/           # Feature specifications
-├── content/             # Content files
-│   ├── blog/            # Blog post MDX files
-│   ├── data/            # Static JSON data
-│   └── projects/        # Project content
-├── docs/                # Project documentation
-├── public/              # Static assets
-│   ├── images/          # Image files
-│   └── robots.txt       # SEO configuration
 ├── src/
-│   ├── app/             # Next.js App Router pages
-│   │   ├── blog/        # Blog pages
-│   │   ├── contact/     # Contact page
-│   │   ├── projects/    # Projects pages
-│   │   ├── resume/      # Resume page
-│   │   └── actions/     # Server actions
-│   ├── components/      # React components
-│   │   ├── blog/        # Blog components
-│   │   ├── contact/     # Contact components
-│   │   ├── features/    # Feature-specific components
-│   │   ├── layout/      # Layout components
-│   │   ├── mdx/         # MDX components
-│   │   ├── projects/    # Project components
-│   │   ├── resume/      # Resume components
-│   │   └── ui/          # Reusable UI components
-│   ├── lib/             # Utility functions
-│   ├── providers/       # React Context providers
-│   └── types/           # TypeScript type definitions
-├── tests/               # Test files
-└── package.json         # Project dependencies
+│   ├── app/                    # Next.js App Router（ページ・レイアウト）
+│   ├── components/             # Reactコンポーネント
+│   │   ├── ui/                 # 基本UIコンポーネント
+│   │   ├── layout/             # レイアウトコンポーネント
+│   │   └── features/           # 機能別コンポーネント
+│   ├── lib/                    # ユーティリティ・ビジネスロジック
+│   ├── types/                  # TypeScript型定義
+│   └── providers/              # Context Providers
+├── content/                    # コンテンツファイル（JSON/MDX）
+│   ├── projects/               # プロジェクト情報
+│   ├── blog/                   # ブログ記事
+│   └── data/                   # 静的データ（スキル・経験・学歴）
+├── public/                     # 静的ファイル（画像等）
+├── docs/                       # プロジェクトドキュメント
+└── .github/workflows/          # CI/CDパイプライン
 ```
 
-## 🎨 Key Features
+## こだわり・工夫した点
 
-### Current Features
+### 技術的なこだわり
 
-- **Blog System**: MDX-powered blog with syntax highlighting and GitHub Flavored Markdown
-- **Projects Portfolio**: Showcase of technical projects with detailed descriptions
-- **Resume/CV**: Professional experience and skills presentation
-- **Contact Form**: Secure contact form with validation
-- **Responsive Design**: Mobile-first design approach
-- **SEO Optimization**: Meta tags, sitemap, and robots.txt
+1. **最新技術スタックの採用**
+   - Next.js 15 + React 19の最新機能（Server Components、App Router）を活用
+   - TypeScript strict modeによる型安全性の徹底
+   - Tailwind CSS 4による高速なスタイリング
 
-### Planned Features
+2. **パフォーマンス最適化**
+   - 静的生成（SSG）による高速なページロード
+   - 画像最適化（AVIF/WebP対応）
+   - コード分割とバンドル最適化
+   - Core Web Vitals 90点以上を目標
 
-- Dark mode theme toggle
-- Internationalization (Japanese/English)
-- Analytics integration
-- Advanced animations
-- Full-text search
+3. **セキュリティ対策の徹底**
+   - セキュリティヘッダーの包括的な設定（CSP, HSTS, X-Frame-Options等）
+   - Zodによる厳密なバリデーション
+   - XSS/CSRF対策の実装
 
-## 🔧 Configuration Files
+4. **保守性・拡張性の追求**
+   - Feature-based ディレクトリ構造
+   - コンポーネントの責務分離
+   - MDX + JSONによる柔軟なコンテンツ管理
+   - 包括的なTypeScript型定義
 
-- **next.config.ts** - Next.js configuration with MDX and security headers
-- **tsconfig.json** - TypeScript compiler options
-- **eslint.config.mjs** - ESLint rules and configuration
-- **tailwind.config.js** - Tailwind CSS customization
-- **jest.config.mjs** - Jest testing configuration
-- **postcss.config.mjs** - PostCSS plugins configuration
+5. **開発体験（DX）の向上**
+   - ESLint + Prettierによるコード品質維持
+   - Huskyによるpre-commit hooks
+   - Jest + Testing Libraryによる自動テスト
+   - 詳細なコメントとドキュメント
 
-## 🌐 Deployment
+### UX/UIのこだわり
 
-### Vercel (Recommended)
+- **アクセシビリティ対応**: WCAG 2.1 Level AA準拠、スクリーンリーダー対応
+- **レスポンシブデザイン**: モバイルファースト設計、全デバイス対応
+- **ダークモード対応**: システム設定との連動、手動切り替え可能
+- **直感的なナビゲーション**: クリアな情報アーキテクチャ
 
-This project is optimized for deployment on Vercel:
+### コンテンツのこだわり
 
-1. **Connect your repository** to Vercel
-2. **Configure environment variables** in Vercel dashboard
-3. **Deploy** - Vercel will automatically build and deploy
+- **具体的な実績の可視化**: プロジェクト詳細、技術選定理由、学びの記録
+- **継続的な更新**: ブログを通じた技術発信と知識の共有
+- **ストーリー性**: 開発背景や課題解決のプロセスを明確に記載
 
-Configuration is already set in `vercel.json`:
+## テストの実行
 
-- Framework: Next.js
-- Region: Tokyo (hnd1)
-- Deployment branches: main, dev
-
-### Manual Deployment
-
-For other platforms:
-
-1. Build the project:
-
-   ```bash
-   npm run build
-   ```
-
-2. Deploy the `.next` folder and necessary files to your hosting service
-
-3. Ensure Node.js runtime is available
-
-4. Set required environment variables
-
-## 🧪 Testing
-
-### Running Tests
+### 単体テスト
 
 ```bash
-# Run all tests
+# すべてのテストを実行
 npm test
 
-# Run tests in watch mode
+# Watch modeでテスト実行
 npm run test:watch
+
+# カバレッジレポート生成
+npm test -- --coverage
 ```
 
-### Test Structure
+### テスト対象
 
-- Component tests in `__tests__` directories
-- Integration tests for pages
-- Utility function tests
+- **コンポーネントテスト**: UI コンポーネントの動作確認
+- **ユニットテスト**: ユーティリティ関数の検証
+- **型テスト**: TypeScript型定義の正確性確認
 
-## 🔐 Security
+テストファイルは各ソースファイルと同じディレクトリに `*.test.tsx` または `*.test.ts` として配置されています。
 
-Security headers are configured in `next.config.ts`:
+## 環境変数の設定
 
-- Strict Transport Security (HSTS)
-- X-Frame-Options (Clickjacking protection)
-- X-Content-Type-Options (MIME sniffing prevention)
-- X-XSS-Protection
-- Referrer Policy
-- Permissions Policy
-
-## 📊 Performance
-
-Target metrics (Lighthouse):
-
-- Performance: 90+
-- Accessibility: 90+
-- Best Practices: 90+
-- SEO: 90+
-
-Optimization strategies:
-
-- Next.js Image component with AVIF/WebP support
-- Static generation (SSG) for optimal loading
-- Code splitting and dynamic imports
-- Bundle size monitoring
-
-## 🤝 Development Workflow
-
-This project uses **Kiro spec-driven development** methodology:
-
-1. **Specifications** in `.kiro/specs/` - Feature requirements and design
-2. **Steering documents** in `.kiro/steering/` - Project-wide guidance
-3. **Custom commands** in `.claude/commands/` - Development automation
-
-### Git Hooks
-
-Pre-commit hooks ensure code quality:
-
-- ESLint checks and auto-fix
-- Prettier formatting
-- TypeScript type checking
-
-## 📖 Documentation
-
-Additional documentation in the `docs/` directory:
-
-- Product Requirements Document (PRD)
-- Technical Design
-- Data Schema Specification
-- Deployment Guide
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Port 3000 already in use:**
+`.env.local` ファイルを作成し、以下の環境変数を設定してください：
 
 ```bash
-# Find and kill the process
-lsof -ti:3000 | xargs kill -9
-# Or use a different port
-npm run dev -- -p 3001
+# 環境設定
+NODE_ENV=development
+
+# サイト情報
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_NAME="Portfolio Website"
+
+# （オプション）外部API統合
+# GitHub Personal Access Token（プロジェクト情報取得用）
+GITHUB_TOKEN=your_github_token
+
+# （オプション）Google Analytics
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+
+# （オプション）reCAPTCHA（お問い合わせフォーム用）
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
 ```
 
-**Module not found errors:**
+### 環境変数の説明
 
-```bash
-# Clear cache and reinstall
-rm -rf node_modules .next
-npm install
-```
+| 変数名                            | 必須 | 説明                               |
+| --------------------------------- | ---- | ---------------------------------- |
+| `NODE_ENV`                        | ○    | 実行環境（development/production） |
+| `NEXT_PUBLIC_SITE_URL`            | ○    | サイトのベースURL                  |
+| `NEXT_PUBLIC_SITE_NAME`           | ○    | サイト名                           |
+| `GITHUB_TOKEN`                    | ×    | GitHub API アクセス用トークン      |
+| `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` | ×    | Google Analytics測定ID             |
+| `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`  | ×    | reCAPTCHA サイトキー               |
+| `RECAPTCHA_SECRET_KEY`            | ×    | reCAPTCHA シークレットキー         |
 
-**TypeScript errors:**
+## 今後の展望
 
-```bash
-# Run type checking
-npm run type-check
-```
+### 継続的な改善
 
-**WSL-specific issues:**
-If file watching doesn't work on WSL, ensure `WATCHPACK_POLLING=true` is set in `.env.local`
-
-## 📄 License
-
-This project is private and not licensed for public use.
-
-## 🔗 Links
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [React Documentation](https://react.dev)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [MDX Documentation](https://mdxjs.com)
+- **月次**: コンテンツ更新（ブログ記事、プロジェクト追加）、新機能追加
+- **四半期**: スキル・経験の更新、依存関係のアップデート、デザイン見直し
 
 ---
 
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
+**Built with ❤️ using Next.js, React, and TypeScript**

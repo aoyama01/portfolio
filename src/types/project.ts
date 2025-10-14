@@ -3,6 +3,7 @@ import { z } from "zod";
 // Project Category Types
 export const ProjectCategorySchema = z.enum([
   "web-app",
+  "research",
   "mobile-app",
   "library",
   "tool",
@@ -44,6 +45,7 @@ export const ProjectSchema = z.object({
   demoUrl: z.string().url().optional(),
   imageUrl: z.string(),
   detailContent: z.string().optional(),
+  showDetailPage: z.boolean().default(false),
 });
 
 export type Project = z.infer<typeof ProjectSchema>;
