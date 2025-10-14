@@ -3,7 +3,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.4-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.1.1-blue)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 モダンなWeb技術を活用した個人ポートフォリオサイト。Next.js 15 + React 19を使用し、プロジェクト紹介、ブログシステム、スキル紹介を実装。キャリア形成において、技術力・実績・人物像を効果的に伝えることを目的としています。
 
@@ -406,19 +405,6 @@ RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
 - **週次**: コンテンツ更新（ブログ記事、プロジェクト追加）
 - **月次**: スキル・経験の更新、依存関係のアップデート
 - **四半期**: デザイン見直し、新機能追加、セキュリティ監査
-
----
-
-## ライセンス
-
-このプロジェクトはMITライセンスの下で公開されています。
-
-## お問い合わせ
-
-ご質問やご提案がございましたら、以下の方法でお気軽にお問い合わせください：
-
-- **GitHub Issues**: [Issues](https://github.com/aoyama01/portfolio/issues)
-- **LinkedIn**: [Shunya Aoyama](https://www.linkedin.com/in/shunya-aoyama)
 
 ---
 
