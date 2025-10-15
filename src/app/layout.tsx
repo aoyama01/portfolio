@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://your-domain.com";
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "Portfolio Website";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aoyama01.com";
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || "aoyama01";
 
 export const metadata: Metadata = {
   title: {
